@@ -4,17 +4,13 @@ const getFormFields = require('../../../lib/get-form-fields');
 const api = require('./api');
 const ui = require('./ui');
 
-const logIn = (data) => {
-  ui.logInSuccess(data);
-};
-
 const onSignUp = (event) => {
   event.preventDefault();
   let signUpData = getFormFields(event.target);
   api.signUp(signUpData)
     .done(function (data, textStatus, jqXHR) {
-      api.autoLogIn(data, textStatus, jqXHR, signUpData)
-        .done(logIn)
+      api.logIn(data, textStatus, jqXHR, signUpData)
+        .done(ui.logInSuccess)
         .fail(ui.logInFailure);
     })
     .fail(ui.signUpFailure);
@@ -24,7 +20,7 @@ const onLogIn = (event) => {
   event.preventDefault();
   let data = getFormFields(event.target);
   api.logIn(data)
-    .done(logIn)
+    .done(ui.logInSuccess)
     .fail(ui.logInFailure);
 };
 

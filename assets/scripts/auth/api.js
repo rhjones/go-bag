@@ -11,11 +11,11 @@ const signUp = (data) => {
   return request;
 };
 
-const logIn = (data) => {
+const logIn = (data, textStatus, jqXHR, signUpData) => {
   let request = $.ajax({
     url: app.host + '/sign-in',
     method: 'POST',
-    data: data,
+    data: signUpData ? signUpData : data,
   });
   return request;
 };
