@@ -7,14 +7,55 @@
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <h1>Example</h1>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+      <div class="pwd-form">
+        <h1> Change password</h1>
+        <form id="change-password" class="change-password">
+          <div>
+            <label for="passwords[old]">Current password</label>
+            <input name="passwords[old]" id="passwords[old]" type="password" placeholder="Current password">
+          </div>
+          <div>
+            <label for="passwords[new]">New password</label>
+            <input name="passwords[new]" id="passwords[new]" type="password" placeholder="New password">
+          </div>
+          <button type="submit">Change Password</button>
+        </form>
+      </div>
+
+      <div class="auth-forms">
+        <form id="sign-up" class="sign-up">
+          <div>
+            <label for="credentials[email]">Email</label>
+            <input name="credentials[email]" id="credentials[email]" type="email" placeholder="Email" required>
+          </div>
+          <div>
+            <label for="credentials[password]">Password</label>
+            <input name="credentials[password]" id="credentials[password]" type="password" placeholder="Password" required>
+          </div>
+          <div>
+            <label for="credentials[password_confirmation]">Confirm password</label>
+            <input name="credentials[password_confirmation]" id="credentials[password_confirmation]" type="password" placeholder="Confirm password" required>
+          </div>
+          <button type="submit">Sign Up</button>
+        </form>
+
+        <form id="log-in">
+          <div>
+            <label for="credentials[email]">Email</label>
+            <input name="credentials[email]" id="credentials[email]" type="email" placeholder="Email" required>
+          </div>
+          <div>
+            <label for="credentials[password]">Password</label>
+            <input name="credentials[password]" id="credentials[password]" type="password" placeholder="Password" required>
+          </div>
+          <button type="submit">Log In</button>
+        </form>
+      </div>
+
+      <div class="user-nav">
+        <a class="log-out" role="button" href="#">Log Out</a>
+        <a class="change-password-link" role="button" href="#">Account</a>
+      </div>
     </body>
 </html>
