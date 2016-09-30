@@ -16,8 +16,13 @@ const getAllLists = (lists) => {
   $('.all-lists').html(allLists(lists));
 };
 
+const searchForItems = (items) => {
+  console.log(items);
+};
+
 module.exports = {
   failure,
   success,
   getAllLists,
+  searchForItems,
 };
