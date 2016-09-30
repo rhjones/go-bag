@@ -13,8 +13,16 @@ const onNewList = (event) => {
     .fail(ui.failure);
 };
 
+const onGetAllLists = (event) => {
+  event.preventDefault();
+  api.allLists()
+    .done(ui.getAllLists)
+    .fail(ui.failure);
+};
+
 const addHandlers = () => {
   $('.new-list-form').on('submit', onNewList);
+  $('a.get-all-lists').on('click', onGetAllLists);
 };
 
 module.exports = {

@@ -15,6 +15,18 @@ const newList = (data) => {
   return request;
 };
 
+const allLists = () => {
+  let request = $.ajax({
+    url: app.host + '/lists',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+  return request;
+};
+
 module.exports = {
   newList,
+  allLists,
 };
