@@ -43,19 +43,9 @@ const changePassword = (data) => {
   return request;
 };
 
-const autoLogIn = (userData, textStatus, jqXHR, signUpData) => {
-  let request = $.ajax({
-    url: app.host + '/sign-in',
-    method: 'POST',
-    data: signUpData,
-  });
-  return request;
-};
-
 module.exports = {
   signUp,
   logIn,
   logOut,
   changePassword,
-  autoLogIn,
 };
