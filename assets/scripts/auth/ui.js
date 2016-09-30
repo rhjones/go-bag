@@ -32,6 +32,17 @@ const passwordChangeSuccess = () => {
   console.log('changed password');
 };
 
+const showSignUp = () => {
+  const signUpForm = require('../templates/signUp.handlebars');
+  $('.auth-forms').html(signUpForm);
+};
+
+const showLogIn = () => {
+  console.log('clicked on log in link');
+  const logInForm = require('../templates/logIn.handlebars');
+  $('.auth-forms').html(logInForm);
+};
+
 module.exports = {
   logInFailure,
   logOutFailure,
@@ -40,4 +51,6 @@ module.exports = {
   logInSuccess,
   logOutSuccess,
   passwordChangeSuccess,
+  showSignUp,
+  showLogIn,
 };

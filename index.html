@@ -8,38 +8,7 @@
     </head>
     <body class="container-fluid">
 
-      <div class="pwd-form">
-        <h1> Change password</h1>
-        <form id="change-password" class="change-password">
-          <div>
-            <label for="passwords[old]">Current password</label>
-            <input name="passwords[old]" id="passwords[old]" type="password" placeholder="Current password">
-          </div>
-          <div>
-            <label for="passwords[new]">New password</label>
-            <input name="passwords[new]" id="passwords[new]" type="password" placeholder="New password">
-          </div>
-          <button type="submit">Change Password</button>
-        </form>
-      </div>
-
       <div class="auth-forms">
-        <form id="sign-up" class="sign-up">
-          <div>
-            <label for="credentials[email]">Email</label>
-            <input name="credentials[email]" id="credentials[email]" type="email" placeholder="Email" required>
-          </div>
-          <div>
-            <label for="credentials[password]">Password</label>
-            <input name="credentials[password]" id="credentials[password]" type="password" placeholder="Password" required>
-          </div>
-          <div>
-            <label for="credentials[password_confirmation]">Confirm password</label>
-            <input name="credentials[password_confirmation]" id="credentials[password_confirmation]" type="password" placeholder="Confirm password" required>
-          </div>
-          <button type="submit">Sign Up</button>
-        </form>
-
         <form id="log-in">
           <div>
             <label for="credentials[email]">Email</label>
@@ -51,6 +20,8 @@
           </div>
           <button type="submit">Log In</button>
         </form>
+
+        <a class="sign-up" role="button" href="#">Sign Up</a>
       </div>
 
       <div class="user-nav">
