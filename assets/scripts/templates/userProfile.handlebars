@@ -1,0 +1,27 @@
+<div class="user-profile">
+  <h1>Welcome, {{email}}!</h1>
+  <a class="new-list" role="button" href="#">Create a list</a>
+
+  <form class="new-list-form">
+    <div>
+      <label for="list[title]">Title</label>
+      <input name="list[title]" id="list[title]" type="text" placeholder="Where are you going?" required>
+    </div>
+    <button type="submit">Create List</button>
+  </form>
+
+  <div>
+    {{> allLists}}
+  </div>
+
+  <div>
+    <form class="add-item">
+      <h1>Add items to list 12 (replace w/title)</h1>
+      <input type="hidden" name="content[list_id]" value="12">
+      <input class="item-search" name="item[name]" id="item[name]" type="text" placeholder="What are you packing?" required>
+      <button type="submit">Add item</button>
+    </form>
+    <ul class="list-items">
+    </ul>
+  </div>
+</div>
