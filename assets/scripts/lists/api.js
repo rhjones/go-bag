@@ -82,6 +82,9 @@ const autocompleteOptions = {
     });
     return searchResults;
   },
+  onInvalidateSelection: function() {
+    $(this).attr('data-id', '');
+  },
   onSelect: function (suggestion) {
     $(this).attr('data-id', suggestion.data);
     console.log($(this));
