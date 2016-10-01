@@ -5,24 +5,24 @@ const api = require('./api');
 const ui = require('./ui');
 
 const onNewList = (event) => {
-  console.log('clicked submit');
-  event.preventDefault();
   let data = getFormFields(event.target);
   api.newList(data)
     .done(ui.success)
     .fail(ui.failure);
 };
 
-const onGetAllLists = (event) => {
-  event.preventDefault();
-  api.allLists()
-    .done(ui.getAllLists)
-    .fail(ui.failure);
-};
-
-const onGetList = (event) => {
-  event.preventDefault();
-  let list_id = $(event.target).attr('data-id');
+const onGetList = (data) => {
+  let list_id = '';
+  // if onGetList is called because user selected a list
+  if ($(event.target).is('a'))  {
+    console.log('event.target', event.target);
+    event.preventDefault();
+    list_id = $(event.target).attr('data-id');
+  }
+  // if onGetList is called because user just added an item
+  else {
+    list_id = data.content.list.id;
+  }
   api.getList(list_id)
     .done(function(data) {
       ui.renderList(data);
@@ -58,10 +58,8 @@ const onAddItemToList = (event) => {
 
 const addHandlers = () => {
   $('.view').on('click', 'a.edit-list', onGetList);
-  $('.new-list-form').on('submit', onNewList);
-  $('a.get-all-lists').on('click', onGetAllLists);
-  
-  $('.add-item').on('submit', onAddItemToList);
+  $('.view').on('submit', 'form.new-list-form', onNewList);
+  $('.view').on('submit', 'form.add-item', onAddItemToList);
 };
 
 module.exports = {
