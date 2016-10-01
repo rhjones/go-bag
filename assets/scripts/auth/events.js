@@ -44,14 +44,12 @@ const onToggleChangePassword = () => {
 };
 
 const addHandlers = () => {
-  $('#sign-up').on('submit', onSignUp);
-  $('#log-in').on('submit', onLogIn);
+  $('.auth-forms').on('submit', '#sign-up', onSignUp);
+  $('.auth-forms').on('submit', '#log-in', onLogIn);
   $('.log-out').on('click', onLogOut);
   $('#change-password').on('submit', onChangePassword);
   $('.auth-forms').on('click', 'a.log-in', ui.showLogIn);
   $('.auth-forms').on('click', 'a.sign-up', ui.showSignUp);
-  // $('a.sign-up').on('click', ui.showSignUp);
-  // $('a.log-in').on('click', function() {console.log('clicked');});
   $('.change-password-link').on('click', onToggleChangePassword);
 };
 
