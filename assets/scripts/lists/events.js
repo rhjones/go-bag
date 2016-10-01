@@ -5,6 +5,9 @@ const api = require('./api');
 const ui = require('./ui');
 
 const onGetAllLists = () => {
+  if ($(event.target).is('a'))  {
+    event.preventDefault();
+  }
   api.getAllLists()
     .done(ui.renderAllLists)
     .fail(ui.failure);
@@ -67,6 +70,7 @@ const addHandlers = () => {
   $('.view').on('click', 'a.edit-list', onGetList);
   $('.view').on('submit', 'form.new-list-form', onNewList);
   $('.view').on('submit', 'form.add-item', onAddItemToList);
+  $('.view').on('click', 'a.close-list', onGetAllLists);
 };
 
 module.exports = {

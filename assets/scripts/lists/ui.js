@@ -25,7 +25,7 @@ const renderList = (data) => {
 const renderAllLists = (lists) => {
   console.log(lists);
   const allLists = require('../templates/allLists.handlebars');
-  $('.all-lists').html(allLists(lists));
+  $('.profile-contents').html(allLists(lists));
 };
 
 module.exports = {
