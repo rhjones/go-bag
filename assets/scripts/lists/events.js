@@ -28,31 +28,14 @@ const onGetAllItems = (event) => {
     .fail(ui.failure);
 };
 
-// const onSearchForItems = () => {
-//   api.allItems()
-//     .done(ui.searchForItems)
-//     .fail(ui.failure);
-// };
-
-// const fakeItems = [
-//   {value: 'toothbrush', data: 1},
-//   {value: 'toothpaste', data: 2},
-//   {value: 'shirt', data: 3},
-//   {value: 'shampoo', data: 4},
-// ];
-
-// const autocompleteOptions = {
-//   lookup: fakeItems,
-// };
-
-// const onAddItem = (event) => {
-//   event.preventDefault();
-//   let data = getFormFields(event.target);
-//   api.addItem(data)
-//     .done(ui.success)
-//     .fail(ui.failure);
-// };
-
+const onAddItemToList = (event) => {
+  event.preventDefault();
+  let data = getFormFields(event.target);
+  data.content.item_id = $(event.target).find('.item-search').attr('data-id');
+  api.addItemToList(data)
+    .done(ui.success)
+    .fail(ui.failure);
+};
 
 const addHandlers = () => {
   $('.new-list-form').on('submit', onNewList);
@@ -61,6 +44,7 @@ const addHandlers = () => {
   // $('.item-search').on('keyup', onSearchForItems);
   $('a.get-all-items').on('click', onGetAllItems);
   $('.item-search').autocomplete(api.autocompleteOptions);
+  $('.add-item').on('submit', onAddItemToList);
 };
 
 module.exports = {

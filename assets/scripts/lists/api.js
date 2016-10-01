@@ -37,27 +37,17 @@ const allItems = () => {
   return request;
 };
 
-const addItemToList = (item) => {
-  $.ajax({
+const addItemToList = (data) => {
+  data.content.packed = false;
+  let request = $.ajax({
     url: app.host + '/contents',
     method: 'POST',
-    data: {
-      content: {
-        item_id: item.data,
-        packed: false,
-        list_id: 12,
-      },
-    },
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
-  })
-  .done(function(data) {
-    console.log(data);
-  })
-  .fail(function() {
-    console.log('fail');
+    data: data,
   });
+  return request;
 };
 
 const autocompleteOptions = {
@@ -86,4 +76,5 @@ module.exports = {
   allLists,
   allItems,
   autocompleteOptions,
+  addItemToList,
 };
