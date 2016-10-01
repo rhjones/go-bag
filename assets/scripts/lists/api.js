@@ -75,6 +75,10 @@ const autocompleteOptions = {
     });
     return searchResults;
   },
+  onSelect: function (suggestion) {
+    $(this).attr('data-id', suggestion.data);
+    console.log($(this));
+  },
 };
 
 module.exports = {
