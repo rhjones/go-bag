@@ -4,10 +4,17 @@ const getFormFields = require('../../../lib/get-form-fields');
 const api = require('./api');
 const ui = require('./ui');
 
+const onGetAllLists = () => {
+  api.getAllLists()
+    .done(ui.renderAllLists)
+    .fail(ui.failure);
+};
+
 const onNewList = (event) => {
+  event.preventDefault();
   let data = getFormFields(event.target);
   api.newList(data)
-    .done(ui.success)
+    .done(onGetAllLists)
     .fail(ui.failure);
 };
 

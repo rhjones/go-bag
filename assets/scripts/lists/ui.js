@@ -2,8 +2,10 @@
 
 // const app = require('../app');
 
-const failure = () => {
+const failure = (jqXHR, textStatus, errorThrown) => {
   console.log('fail');
+  console.log(textStatus);
+  console.error(errorThrown);
 };
 
 const success = (data) => {
@@ -20,9 +22,16 @@ const renderList = (data) => {
   $('.profile-contents').html(singleList(list));
 };
 
+const renderAllLists = (lists) => {
+  console.log(lists);
+  const allLists = require('../templates/allLists.handlebars');
+  $('.all-lists').html(allLists(lists));
+};
+
 module.exports = {
   failure,
   success,
   searchForItems,
   renderList,
+  renderAllLists
 };

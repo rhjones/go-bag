@@ -15,6 +15,16 @@ const newList = (data) => {
   return request;
 };
 
+const getAllLists = () => {
+ return $.ajax({
+  url: app.host + '/lists',
+  method: 'GET',
+  headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+ });
+};
+
 const getList = (data) => {
   // data coming in to getList is either a list_id or an object containing a list.id
   let list_id = Number.isInteger(Number.parseInt(data, 10)) ? data : data.content.list.id;
@@ -84,4 +94,5 @@ module.exports = {
   autocompleteOptions,
   addItemToList,
   addNewItem,
+  getAllLists,
 };
