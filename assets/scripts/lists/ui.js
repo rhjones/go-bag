@@ -10,12 +10,6 @@ const success = (data) => {
   console.log(data);
 };
 
-const getAllLists = (lists) => {
-  console.log(lists);
-  const allLists = require('../templates/allLists.handlebars');
-  $('.all-lists').html(allLists(lists));
-};
-
 const searchForItems = (items) => {
   console.log(items);
 };
@@ -29,7 +23,6 @@ const renderList = (data) => {
 module.exports = {
   failure,
   success,
-  getAllLists,
   searchForItems,
   renderList,
 };
