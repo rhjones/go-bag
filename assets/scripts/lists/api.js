@@ -26,9 +26,10 @@ const allLists = () => {
   return request;
 };
 
-const allItems = () => {
+const allListItems = (data) => {
+  let list_id = data.content.list.id;
   let request = $.ajax({
-    url: app.host + '/items',
+    url: app.host + '/lists/' + list_id,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + app.user.token,
@@ -74,7 +75,7 @@ const autocompleteOptions = {
 module.exports = {
   newList,
   allLists,
-  allItems,
+  allListItems,
   autocompleteOptions,
   addItemToList,
 };

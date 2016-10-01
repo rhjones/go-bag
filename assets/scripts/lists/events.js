@@ -20,10 +20,9 @@ const onGetAllLists = (event) => {
     .fail(ui.failure);
 };
 
-const onGetAllItems = (event) => {
-  event.preventDefault();
-  api.allItems()
-    .done(ui.success)
+const onGetAllListContents = (data) => {
+  api.allListItems(data)
+    .done(ui.renderListContents)
     .fail(ui.failure);
 };
 
@@ -32,14 +31,14 @@ const onAddItemToList = (event) => {
   let data = getFormFields(event.target);
   data.content.item_id = $(event.target).find('.item-search').attr('data-id');
   api.addItemToList(data)
-    .done(ui.addItemToListSuccess)
+    .done(onGetAllListContents)
     .fail(ui.failure);
 };
 
 const addHandlers = () => {
   $('.new-list-form').on('submit', onNewList);
   $('a.get-all-lists').on('click', onGetAllLists);
-  $('a.get-all-items').on('click', onGetAllItems);
+  // $('a.get-all-items').on('click', onGetAllItems);
   $('.item-search').autocomplete(api.autocompleteOptions);
   $('.add-item').on('submit', onAddItemToList);
 };
