@@ -1,19 +1,7 @@
 <div class="user-profile">
   <h1>Welcome, {{email}}!</h1>
-  <a class="new-list" role="button" href="#">Create a list</a>
-
-  <form class="new-list-form">
-    <div>
-      <label for="list[title]">Title</label>
-      <input name="list[title]" id="list[title]" type="text" placeholder="Where are you going?" required>
-    </div>
-    <button type="submit">Create List</button>
-  </form>
-
-  <ul class="all-lists">
-    {{> allLists}}
-  </ul>
 
   <div class="profile-contents">
+    {{> allLists}}
   </div>
 </div>

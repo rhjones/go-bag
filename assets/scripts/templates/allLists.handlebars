@@ -1,3 +1,15 @@
-{{#each lists}}
-<li><a href="" class="edit-list" data-id={{id}}>{{title}}</a> <a href="" class="delete-list" data-id={{id}}>Delete</a></li>
-{{/each}}
+<a class="new-list" role="button" href="#">Create a list</a>
+
+<form class="new-list-form">
+  <div>
+    <label for="list[title]">Title</label>
+    <input name="list[title]" id="list[title]" type="text" placeholder="Where are you going?" required>
+  </div>
+  <button type="submit">Create List</button>
+</form>
+  
+<ul class="all-lists">
+  {{#each lists}}
+  <li><a href="" class="edit-list" data-id={{id}}>{{title}}</a> <a href="" class="delete-list" data-id={{id}}>Delete</a></li>
+  {{/each}}
+</ul>
