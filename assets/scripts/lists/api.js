@@ -38,7 +38,23 @@ const allListItems = (data) => {
   return request;
 };
 
-const addItemToList = (data) => {
+const addNewItem = (data) => {
+  let request = $.ajax({
+    url: app.host + '/items',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data: data,
+  });
+  return request;
+};
+
+const addItemToList = (data, textStatus, jqXHR, contentData) => {
+  console.log('data is', data);
+  console.log('contentData is', contentData);
+  data = contentData ? contentData : data;
+  console.log('data inside of addItemToList is', data);
   data.content.packed = false;
   let request = $.ajax({
     url: app.host + '/contents',
@@ -78,4 +94,5 @@ module.exports = {
   allListItems,
   autocompleteOptions,
   addItemToList,
+  addNewItem,
 };

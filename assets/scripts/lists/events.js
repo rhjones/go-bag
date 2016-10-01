@@ -28,11 +28,27 @@ const onGetAllListContents = (data) => {
 
 const onAddItemToList = (event) => {
   event.preventDefault();
-  let data = getFormFields(event.target);
-  data.content.item_id = $(event.target).find('.item-search').attr('data-id');
-  api.addItemToList(data)
-    .done(onGetAllListContents)
-    .fail(ui.failure);
+  let contentData = getFormFields(event.target);
+  contentData.content.item_id = $(event.target).find('.item-search').attr('data-id');
+  if (contentData.content.item_id) {
+    api.addItemToList(contentData)
+      .done(onGetAllListContents)
+      .fail(ui.failure);
+  } else {
+    api.addNewItem(contentData)
+      .done(function(data) {
+        let newContentData = {
+          content: {
+            item_id: data.item.id,
+            list_id: contentData.content.list_id,
+          }
+        };
+        api.addItemToList(newContentData)
+          .done(onGetAllListContents)
+          .fail(ui.failure);
+      })
+      .fail(ui.failure);
+  }
 };
 
 const addHandlers = () => {
