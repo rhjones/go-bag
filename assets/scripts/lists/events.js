@@ -1,6 +1,5 @@
 'use strict';
 
-// const autocomplete = require('../../../lib/jquery.autocomplete.min');
 const getFormFields = require('../../../lib/get-form-fields');
 const api = require('./api');
 const ui = require('./ui');
@@ -33,15 +32,13 @@ const onAddItemToList = (event) => {
   let data = getFormFields(event.target);
   data.content.item_id = $(event.target).find('.item-search').attr('data-id');
   api.addItemToList(data)
-    .done(ui.success)
+    .done(ui.addItemToListSuccess)
     .fail(ui.failure);
 };
 
 const addHandlers = () => {
   $('.new-list-form').on('submit', onNewList);
   $('a.get-all-lists').on('click', onGetAllLists);
-  // $('add-items').on('submit', onAddItem);
-  // $('.item-search').on('keyup', onSearchForItems);
   $('a.get-all-items').on('click', onGetAllItems);
   $('.item-search').autocomplete(api.autocompleteOptions);
   $('.add-item').on('submit', onAddItemToList);
