@@ -5,4 +5,7 @@
   <button type="submit">Add item</button>
 </form>
 <ul class="list-items">
+  {{#each contents}}
+  <li>{{item.name}}</li>
+  {{/each}}
 </ul>

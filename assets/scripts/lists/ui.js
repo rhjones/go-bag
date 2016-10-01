@@ -26,18 +26,10 @@ const renderList = (data) => {
   $('.profile-contents').html(singleList(list));
 };
 
-const renderListContents = (data) => {
-  console.log(data.list.contents);
-  let contents = data.list;
-  const listContents = require('../templates/listContents.handlebars');
-  $('.list-items').html(listContents(contents));
-};
-
 module.exports = {
   failure,
   success,
   getAllLists,
   searchForItems,
-  renderListContents,
   renderList,
 };

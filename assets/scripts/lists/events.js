@@ -20,9 +20,14 @@ const onGetAllLists = (event) => {
     .fail(ui.failure);
 };
 
-const onGetAllListContents = (data) => {
-  api.getList(data)
-    .done(ui.renderListContents)
+const onGetList = (event) => {
+  event.preventDefault();
+  let list_id = $(event.target).attr('data-id');
+  api.getList(list_id)
+    .done(function(data) {
+      ui.renderList(data);
+      $('.item-search').autocomplete(api.autocompleteOptions);
+    })
     .fail(ui.failure);
 };
 
@@ -32,7 +37,7 @@ const onAddItemToList = (event) => {
   contentData.content.item_id = $(event.target).find('.item-search').attr('data-id');
   if (contentData.content.item_id) {
     api.addItemToList(contentData)
-      .done(onGetAllListContents)
+      .done(onGetList)
       .fail(ui.failure);
   } else {
     api.addNewItem(contentData)
@@ -44,28 +49,18 @@ const onAddItemToList = (event) => {
           }
         };
         api.addItemToList(newContentData)
-          .done(onGetAllListContents)
+          .done(onGetList)
           .fail(ui.failure);
       })
       .fail(ui.failure);
   }
 };
 
-const onGetList = (event) => {
-  event.preventDefault();
-  let list_id = $(event.target).attr('data-id');
-  console.log('list_id', list_id);
-  console.log('is list_id an integer in onGetList?', Number.isInteger(Number.parseInt(list_id, 10)));
-  api.getList(list_id)
-    .done(ui.renderList)
-    .fail(ui.failure);
-};
-
 const addHandlers = () => {
   $('.view').on('click', 'a.edit-list', onGetList);
   $('.new-list-form').on('submit', onNewList);
   $('a.get-all-lists').on('click', onGetAllLists);
-  $('.item-search').autocomplete(api.autocompleteOptions);
+  
   $('.add-item').on('submit', onAddItemToList);
 };
 
