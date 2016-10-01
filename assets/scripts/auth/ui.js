@@ -18,9 +18,12 @@ const signUpFailure = () => {
   console.log('fail');
 };
 
-const logInSuccess = (data) => {
+const renderProfile = (data) => {
   app.user = data.user;
-  console.log(data.user);
+  let user = app.user;
+  console.log('app.user is', user);
+  const userProfile = require('../templates/userProfile.handlebars');
+  $('.view').html(userProfile(user));
 };
 
 const logOutSuccess = () => {
@@ -48,7 +51,7 @@ module.exports = {
   logOutFailure,
   passwordChangeFailure,
   signUpFailure,
-  logInSuccess,
+  renderProfile,
   logOutSuccess,
   passwordChangeSuccess,
   showSignUp,

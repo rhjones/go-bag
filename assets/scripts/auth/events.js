@@ -3,7 +3,6 @@
 const getFormFields = require('../../../lib/get-form-fields');
 const api = require('./api');
 const ui = require('./ui');
-const profile = require('../profile/events.js');
 
 const onSignUp = (event) => {
   event.preventDefault();
@@ -11,7 +10,7 @@ const onSignUp = (event) => {
   api.signUp(signUpData)
     .done(function (data, textStatus, jqXHR) {
       api.logIn(data, textStatus, jqXHR, signUpData)
-        .done(profile.buildProfile)
+        .done(ui.renderProfile)
         .fail(ui.logInFailure);
     })
     .fail(ui.signUpFailure);
@@ -21,7 +20,7 @@ const onLogIn = (event) => {
   event.preventDefault();
   let data = getFormFields(event.target);
   api.logIn(data)
-    .done(profile.buildProfile)
+    .done(ui.renderProfile)
     .fail(ui.logInFailure);
 };
 
