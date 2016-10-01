@@ -38,7 +38,6 @@ const onAddItemToList = (event) => {
 const addHandlers = () => {
   $('.new-list-form').on('submit', onNewList);
   $('a.get-all-lists').on('click', onGetAllLists);
-  // $('a.get-all-items').on('click', onGetAllItems);
   $('.item-search').autocomplete(api.autocompleteOptions);
   $('.add-item').on('submit', onAddItemToList);
 };
