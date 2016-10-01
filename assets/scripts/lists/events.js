@@ -21,7 +21,7 @@ const onGetAllLists = (event) => {
 };
 
 const onGetAllListContents = (data) => {
-  api.allListItems(data)
+  api.getList(data)
     .done(ui.renderListContents)
     .fail(ui.failure);
 };
@@ -51,7 +51,18 @@ const onAddItemToList = (event) => {
   }
 };
 
+const onGetList = (event) => {
+  event.preventDefault();
+  let list_id = $(event.target).attr('data-id');
+  console.log('list_id', list_id);
+  console.log('is list_id an integer in onGetList?', Number.isInteger(Number.parseInt(list_id, 10)));
+  api.getList(list_id)
+    .done(ui.renderList)
+    .fail(ui.failure);
+};
+
 const addHandlers = () => {
+  $('.view').on('click', 'a.edit-list', onGetList);
   $('.new-list-form').on('submit', onNewList);
   $('a.get-all-lists').on('click', onGetAllLists);
   $('.item-search').autocomplete(api.autocompleteOptions);

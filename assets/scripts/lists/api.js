@@ -26,8 +26,9 @@ const allLists = () => {
   return request;
 };
 
-const allListItems = (data) => {
-  let list_id = data.content.list.id;
+const getList = (data) => {
+  // data coming in to getList is either a list_id or an object containing a list.id
+  let list_id = Number.isInteger(Number.parseInt(data, 10)) ? data : data.content.list.id;
   let request = $.ajax({
     url: app.host + '/lists/' + list_id,
     method: 'GET',
@@ -91,7 +92,7 @@ const autocompleteOptions = {
 module.exports = {
   newList,
   allLists,
-  allListItems,
+  getList,
   autocompleteOptions,
   addItemToList,
   addNewItem,

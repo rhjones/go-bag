@@ -20,6 +20,12 @@ const searchForItems = (items) => {
   console.log(items);
 };
 
+const renderList = (data) => {
+  let list = data.list;
+  const singleList = require('../templates/singleList.handlebars');
+  $('.profile-contents').html(singleList(list));
+};
+
 const renderListContents = (data) => {
   console.log(data.list.contents);
   let contents = data.list;
@@ -32,5 +38,6 @@ module.exports = {
   success,
   getAllLists,
   searchForItems,
-  renderListContents
+  renderListContents,
+  renderList,
 };
