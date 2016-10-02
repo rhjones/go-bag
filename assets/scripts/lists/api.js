@@ -133,6 +133,17 @@ const updateList = (data) => {
   });
 };
 
+const cloneList = (list_id) => {
+  return $.ajax({
+    url: app.host + '/clone/' + list_id,
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data: "{}",
+  });
+};
+
 module.exports = {
   newList,
   getList,
@@ -144,4 +155,5 @@ module.exports = {
   deleteContent,
   updateContent,
   updateList,
+  cloneList,
 };

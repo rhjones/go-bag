@@ -47,6 +47,15 @@ const onGetList = (data) => {
     .fail(ui.getFailure);
 };
 
+const onCloneList = () => {
+  event.preventDefault();
+  let list_id = $(event.target).parents('li').attr('data-id');
+  console.log(list_id);
+  api.cloneList(list_id)
+    .done(onGetAllLists)
+    .fail(ui.createListFailure);
+};
+
 const onAddItemToList = (event) => {
   event.preventDefault();
   let contentData = getFormFields(event.target);
@@ -162,6 +171,7 @@ const addHandlers = () => {
   $('.view').on('click', '.pack-content', onTogglePackedContent);
   $('.view').on('click', 'a.edit-list', onEditList);
   $('.view').on('click', 'a.update-list', onUpdateList);
+  $('.view').on('click', 'a.clone-list', onCloneList);
 };
 
 module.exports = {
