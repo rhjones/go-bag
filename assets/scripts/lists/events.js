@@ -74,7 +74,13 @@ const onAddItemToList = (event) => {
 
 const onDeleteList = (event) => {
   event.preventDefault();
-  let list_id = $(event.target).attr('data-id');
+  let list_id = '';
+  if ($(event.target).attr('data-id')) {
+    list_id = $(event.target).attr('data-id');
+  } else if ($(event.target).parents('form').attr('data-id')) {
+    list_id = $(event.target).parents('form').attr('data-id');
+  }
+  console.log(list_id);
   api.deleteList(list_id)
     .done(onGetAllLists)
     .fail(ui.deleteListFailure);
