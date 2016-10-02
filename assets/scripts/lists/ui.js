@@ -2,10 +2,48 @@
 
 // const app = require('../app');
 
-const failure = (jqXHR, textStatus, errorThrown) => {
-  console.log('fail');
-  console.log(textStatus);
-  console.error(errorThrown);
+const warning = require('../templates/warning.handlebars');
+
+const messages = {
+  fail: 'Fail.',
+  getFail: 'Unable to retrieve data.',
+  createListFail: 'Unable to create list.',
+  addItemFail: 'Unable to add item.',
+  deleteListFail: 'Unable to delete list.',
+  deleteItemFail: 'Unable to delete item.',
+  updateItemFail: 'Unable to update item.',
+};
+
+const renderWarning = (message) => {
+  $('.message').html(warning(message));
+};
+
+const failure = () => {
+  renderWarning({message: messages.fail});
+};
+
+const getFailure = () => {
+  renderWarning({message: messages.getFail});
+};
+
+const createListFailure = () => {
+  renderWarning({message: messages.createListFail});
+};
+
+const addItemFailure = () => {
+  renderWarning({message: messages.addItemFail});
+};
+
+const deleteListFailure = () => {
+  renderWarning({message: messages.deleteListFail});
+};
+
+const deleteItemFailure = () => {
+  renderWarning({message: messages.deleteItemFail});
+};
+
+const updateItemFailure = () => {
+  renderWarning({message: messages.updateItemFail});
 };
 
 const success = (data) => {
@@ -30,6 +68,12 @@ const renderAllLists = (lists) => {
 
 module.exports = {
   failure,
+  getFailure,
+  createListFailure,
+  addItemFailure,
+  deleteListFailure,
+  deleteItemFailure,
+  updateItemFailure,
   success,
   searchForItems,
   renderList,

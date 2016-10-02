@@ -10,7 +10,7 @@ const onGetAllLists = () => {
   }
   api.getAllLists()
     .done(ui.renderAllLists)
-    .fail(ui.failure);
+    .fail(ui.getFailure);
 };
 
 const onNewList = (event) => {
@@ -18,7 +18,7 @@ const onNewList = (event) => {
   let data = getFormFields(event.target);
   api.newList(data)
     .done(onGetAllLists)
-    .fail(ui.failure);
+    .fail(ui.createListFailure);
 };
 
 const onGetList = (data) => {
@@ -44,7 +44,7 @@ const onGetList = (data) => {
       ui.renderList(data);
       $('.item-search').autocomplete(api.autocompleteOptions);
     })
-    .fail(ui.failure);
+    .fail(ui.getFailure);
 };
 
 const onAddItemToList = (event) => {
@@ -54,7 +54,7 @@ const onAddItemToList = (event) => {
   if (contentData.content.item_id) {
     api.addItemToList(contentData)
       .done(onGetList)
-      .fail(ui.failure);
+      .fail(ui.addItemFailure);
   } else {
     api.addNewItem(contentData)
       .done(function(data) {
@@ -66,9 +66,9 @@ const onAddItemToList = (event) => {
         };
         api.addItemToList(newContentData)
           .done(onGetList)
-          .fail(ui.failure);
+          .fail(ui.addItemFailure);
       })
-      .fail(ui.failure);
+      .fail(ui.addItemFailure);
   }
 };
 
@@ -77,7 +77,7 @@ const onDeleteList = (event) => {
   let list_id = $(event.target).attr('data-id');
   api.deleteList(list_id)
     .done(onGetAllLists)
-    .fail(ui.failure);
+    .fail(ui.deleteListFailure);
 };
 
 const onDeleteContent = (event) => {
@@ -91,7 +91,7 @@ const onDeleteContent = (event) => {
       console.log('successfully deleted content');
       onGetList(list_id);
     })
-    .fail(ui.failure);
+    .fail(ui.deleteItemFailure);
 };
 
 const onTogglePackedContent = (event) => {
@@ -112,7 +112,7 @@ const onTogglePackedContent = (event) => {
     .done(function() {
       onGetList(list_id);
     })
-    .fail(ui.failure);
+    .fail(ui.updateItemFailure);
 };
 
 const addHandlers = () => {
