@@ -43,14 +43,32 @@ const onToggleChangePassword = () => {
   ui.toggleChangePassword();
 };
 
+const onShowAuth = () => {
+  event.preventDefault();
+  let authForm = '';
+  if ($(event.target).hasClass('sign-up')) {
+    authForm = 'sign-up';
+  } else if ($(event.target).hasClass('log-in')) {
+    authForm = 'log-in';
+  }
+  ui.showAuth(authForm);
+};
+
+const onGoHome = () => {
+  event.preventDefault();
+  ui.goHome();
+};
+
 const addHandlers = () => {
-  $('.auth-forms').on('submit', '#sign-up', onSignUp);
-  $('.auth-forms').on('submit', '#log-in', onLogIn);
+  $('.view').on('submit', '#sign-up', onSignUp);
+  $('.view').on('submit', '#log-in', onLogIn);
   $('.log-out').on('click', onLogOut);
   $('#change-password').on('submit', onChangePassword);
-  $('.auth-forms').on('click', 'a.log-in', ui.showLogIn);
-  $('.auth-forms').on('click', 'a.sign-up', ui.showSignUp);
+  $('.view').on('click', '.auth-forms .log-in', ui.showLogIn);
+  $('.view').on('click', '.auth-forms a.sign-up', ui.showSignUp);
   $('.change-password-link').on('click', onToggleChangePassword);
+  $('.view').on('click', '.auth', onShowAuth);
+  $('.view').on('click', '.home-link', onGoHome);
 };
 
 module.exports = {

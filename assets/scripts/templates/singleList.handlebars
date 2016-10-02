@@ -1,6 +1,8 @@
 <a href="" class="close-list">Close</a>
-<form class="add-item">
-  <h1>{{title}}</h1>
+<form class="add-item" data-id="{{id}}">
+  <div class="list-header">
+    {{> listHeader}}
+  </div>
   <input type="hidden" name="content[list_id]" value="{{id}}">
   <input class="item-search" name="item[name]" id="item[name]" type="text" placeholder="What are you packing?" required>
   <button type="submit">Add item</button>

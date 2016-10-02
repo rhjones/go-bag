@@ -10,7 +10,7 @@ const onGetAllLists = () => {
   }
   api.getAllLists()
     .done(ui.renderAllLists)
-    .fail(ui.failure);
+    .fail(ui.getFailure);
 };
 
 const onNewList = (event) => {
@@ -18,7 +18,7 @@ const onNewList = (event) => {
   let data = getFormFields(event.target);
   api.newList(data)
     .done(onGetAllLists)
-    .fail(ui.failure);
+    .fail(ui.createListFailure);
 };
 
 const onGetList = (data) => {
@@ -44,7 +44,16 @@ const onGetList = (data) => {
       ui.renderList(data);
       $('.item-search').autocomplete(api.autocompleteOptions);
     })
-    .fail(ui.failure);
+    .fail(ui.getFailure);
+};
+
+const onCloneList = () => {
+  event.preventDefault();
+  let list_id = $(event.target).parents('li').attr('data-id');
+  console.log(list_id);
+  api.cloneList(list_id)
+    .done(onGetAllLists)
+    .fail(ui.createListFailure);
 };
 
 const onAddItemToList = (event) => {
@@ -54,7 +63,7 @@ const onAddItemToList = (event) => {
   if (contentData.content.item_id) {
     api.addItemToList(contentData)
       .done(onGetList)
-      .fail(ui.failure);
+      .fail(ui.addItemFailure);
   } else {
     api.addNewItem(contentData)
       .done(function(data) {
@@ -66,18 +75,24 @@ const onAddItemToList = (event) => {
         };
         api.addItemToList(newContentData)
           .done(onGetList)
-          .fail(ui.failure);
+          .fail(ui.addItemFailure);
       })
-      .fail(ui.failure);
+      .fail(ui.addItemFailure);
   }
 };
 
 const onDeleteList = (event) => {
   event.preventDefault();
-  let list_id = $(event.target).attr('data-id');
+  let list_id = '';
+  if ($(event.target).attr('data-id')) {
+    list_id = $(event.target).attr('data-id');
+  } else if ($(event.target).parents('form').attr('data-id')) {
+    list_id = $(event.target).parents('form').attr('data-id');
+  }
+  console.log(list_id);
   api.deleteList(list_id)
     .done(onGetAllLists)
-    .fail(ui.failure);
+    .fail(ui.deleteListFailure);
 };
 
 const onDeleteContent = (event) => {
@@ -91,7 +106,7 @@ const onDeleteContent = (event) => {
       console.log('successfully deleted content');
       onGetList(list_id);
     })
-    .fail(ui.failure);
+    .fail(ui.deleteItemFailure);
 };
 
 const onTogglePackedContent = (event) => {
@@ -112,17 +127,51 @@ const onTogglePackedContent = (event) => {
     .done(function() {
       onGetList(list_id);
     })
+    .fail(ui.updateItemFailure);
+};
+
+const onEditList = (event) => {
+  event.preventDefault();
+  let title = $(event.target).parents('form').find('h1').html();
+  console.log(title);
+  ui.editListTitle(title);
+};
+
+const onUpdateList = (event) => {
+  event.preventDefault();
+  let list_id = ($(event.target).parents('form').attr('data-id'));
+  console.log(list_id);
+  let formData = getFormFields(document.getElementsByTagName('form')[0]);
+  let data = {
+    list: {
+      id: formData.content.list_id,
+      title: formData.list.title,
+    }
+  };
+  console.log('data', data);
+  api.updateList(data)
+    .done(function() {
+      api.getList(list_id)
+        .done(function(data) {
+          ui.renderList(data);
+          $('.item-search').autocomplete(api.autocompleteOptions);
+        })
+        .fail(ui.getFailure);
+    })
     .fail(ui.failure);
 };
 
 const addHandlers = () => {
-  $('.view').on('click', 'a.edit-list', onGetList);
+  $('.view').on('click', 'a.view-list', onGetList);
   $('.view').on('submit', 'form.new-list-form', onNewList);
   $('.view').on('submit', 'form.add-item', onAddItemToList);
   $('.view').on('click', 'a.close-list', onGetAllLists);
   $('.view').on('click', 'a.delete-list', onDeleteList);
   $('.view').on('click', 'a.delete-content', onDeleteContent);
   $('.view').on('click', '.pack-content', onTogglePackedContent);
+  $('.view').on('click', 'a.edit-list', onEditList);
+  $('.view').on('click', 'a.update-list', onUpdateList);
+  $('.view').on('click', 'a.clone-list', onCloneList);
 };
 
 module.exports = {

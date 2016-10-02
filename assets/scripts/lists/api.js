@@ -122,6 +122,28 @@ const updateContent = (data) => {
   });
 };
 
+const updateList = (data) => {
+  return $.ajax({
+    url: app.host + '/lists/' + data.list.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data: data,
+  });
+};
+
+const cloneList = (list_id) => {
+  return $.ajax({
+    url: app.host + '/clone/' + list_id,
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data: "{}",
+  });
+};
+
 module.exports = {
   newList,
   getList,
@@ -132,4 +154,6 @@ module.exports = {
   deleteList,
   deleteContent,
   updateContent,
+  updateList,
+  cloneList,
 };
