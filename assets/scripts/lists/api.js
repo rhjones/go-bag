@@ -122,6 +122,17 @@ const updateContent = (data) => {
   });
 };
 
+const updateList = (data) => {
+  return $.ajax({
+    url: app.host + '/lists/' + data.list.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data: data,
+  });
+};
+
 module.exports = {
   newList,
   getList,
@@ -132,4 +143,5 @@ module.exports = {
   deleteList,
   deleteContent,
   updateContent,
+  updateList,
 };

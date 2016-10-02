@@ -128,6 +128,30 @@ const onEditList = (event) => {
   ui.editListTitle(title);
 };
 
+const onUpdateList = (event) => {
+  event.preventDefault();
+  let list_id = ($(event.target).parents('form').attr('data-id'));
+  console.log(list_id);
+  let formData = getFormFields(document.getElementsByTagName('form')[0]);
+  let data = {
+    list: {
+      id: formData.content.list_id,
+      title: formData.list.title,
+    }
+  };
+  console.log('data', data);
+  api.updateList(data)
+    .done(function() {
+      api.getList(list_id)
+        .done(function(data) {
+          ui.renderList(data);
+          $('.item-search').autocomplete(api.autocompleteOptions);
+        })
+        .fail(ui.getFailure);
+    })
+    .fail(ui.failure);
+};
+
 const addHandlers = () => {
   $('.view').on('click', 'a.view-list', onGetList);
   $('.view').on('submit', 'form.new-list-form', onNewList);
@@ -137,6 +161,7 @@ const addHandlers = () => {
   $('.view').on('click', 'a.delete-content', onDeleteContent);
   $('.view').on('click', '.pack-content', onTogglePackedContent);
   $('.view').on('click', 'a.edit-list', onEditList);
+  $('.view').on('click', 'a.update-list', onUpdateList);
 };
 
 module.exports = {
