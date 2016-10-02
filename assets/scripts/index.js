@@ -7,7 +7,10 @@
 const authEvents = require('./auth/events.js');
 const listEvents = require('./lists/events.js');
 
+const home = require('./templates/home.handlebars');
+
 $(() => {
+  $('.view').html(home);
   authEvents.addHandlers();
   listEvents.addHandlers();
 });
