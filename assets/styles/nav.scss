@@ -1,0 +1,38 @@
+nav {
+  background: $black;
+  color: $white;
+  padding: .25em 1em;
+  width: 100%;
+
+  i {
+    margin-right: .25em;
+  }
+
+  a,
+  a:hover,
+  a:active,
+  a:visited {
+    color: $white;
+  }
+
+  .logo {
+    a,
+    a:hover,
+    a:active,
+    a:visited {
+      text-decoration: none;
+    }
+  }
+
+  .user-nav {
+    float: right;
+
+    a {
+      display: block;
+      float: right;
+      padding: .5em;
+    }
+  }
+
+
+}
