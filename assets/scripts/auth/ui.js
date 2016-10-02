@@ -11,6 +11,7 @@ const messages = {
   passwordChangeFail: 'Unable to change password.',
 };
 
+const home = require('../templates/home.handlebars');
 const logInForm = require('../templates/logIn.handlebars');
 const signUpForm = require('../templates/signUp.handlebars');
 
@@ -70,6 +71,14 @@ const showAuth = (authForm) => {
   }
 };
 
+const goHome = () => {
+  if (app.user.id) {
+    renderProfile(app);
+  } else {
+    $('.view').html(home);
+  }
+};
+
 module.exports = {
   logInFailure,
   logOutFailure,
@@ -81,4 +90,5 @@ module.exports = {
   showSignUp,
   showLogIn,
   showAuth,
+  goHome,
 };

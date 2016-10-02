@@ -54,15 +54,21 @@ const onShowAuth = () => {
   ui.showAuth(authForm);
 };
 
+const onGoHome = () => {
+  event.preventDefault();
+  ui.goHome();
+};
+
 const addHandlers = () => {
-  $('.auth-forms').on('submit', '#sign-up', onSignUp);
-  $('.auth-forms').on('submit', '#log-in', onLogIn);
+  $('.view').on('submit', '#sign-up', onSignUp);
+  $('.view').on('submit', '#log-in', onLogIn);
   $('.log-out').on('click', onLogOut);
   $('#change-password').on('submit', onChangePassword);
   $('.view').on('click', '.auth-forms .log-in', ui.showLogIn);
   $('.view').on('click', '.auth-forms a.sign-up', ui.showSignUp);
   $('.change-password-link').on('click', onToggleChangePassword);
-  $('.btn-home.auth').on('click', onShowAuth);
+  $('.view').on('click', '.auth', onShowAuth);
+  $('.view').on('click', '.home-link', onGoHome);
 };
 
 module.exports = {
