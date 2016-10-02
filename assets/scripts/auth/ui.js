@@ -2,20 +2,33 @@
 
 const app = require('../app');
 
+const warning = require('../templates/warning.handlebars');
+
+const messages = {
+  signUpFail: 'Unable to create account.',
+  logInFail: 'Unable to log in.',
+  logOutFail: 'Unable to log out.',
+  passwordChangeFail: 'Unable to change password.',
+};
+
+const renderWarning = (message) => {
+  $('.message').html(warning(message));
+};
+
 const logInFailure = () => {
-  console.log('fail');
+  renderWarning({message: messages.logInFail});
 };
 
 const logOutFailure = () => {
-  console.log('fail');
+  renderWarning({message: messages.logOutFail});
 };
 
 const passwordChangeFailure = () => {
-  console.log('fail');
+  renderWarning({message: messages.passwordChangeFail});
 };
 
 const signUpFailure = () => {
-  console.log('fail');
+  renderWarning({message: messages.signUpFail});
 };
 
 const renderProfile = (data) => {
