@@ -66,11 +66,20 @@ const onAddItemToList = (event) => {
   }
 };
 
+const onDeleteList = (event) => {
+  event.preventDefault();
+  let list_id = $(event.target).attr('data-id');
+  api.deleteList(list_id)
+    .done(onGetAllLists)
+    .fail(ui.failure);
+};
+
 const addHandlers = () => {
   $('.view').on('click', 'a.edit-list', onGetList);
   $('.view').on('submit', 'form.new-list-form', onNewList);
   $('.view').on('submit', 'form.add-item', onAddItemToList);
   $('.view').on('click', 'a.close-list', onGetAllLists);
+  $('.view').on('click', 'a.delete-list', onDeleteList);
 };
 
 module.exports = {

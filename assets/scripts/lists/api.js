@@ -91,6 +91,16 @@ const autocompleteOptions = {
   },
 };
 
+const deleteList = (list_id) => {
+  return $.ajax({
+    url: app.host + '/lists/' + list_id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+
 module.exports = {
   newList,
   getList,
@@ -98,4 +108,5 @@ module.exports = {
   addItemToList,
   addNewItem,
   getAllLists,
+  deleteList,
 };
