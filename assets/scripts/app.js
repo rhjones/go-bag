@@ -1,7 +1,7 @@
 'use strict';
 
 const app = {
-  host: 'https://go-bag.herokuapp.com/',
+  host: 'https://go-bag.herokuapp.com',
   user: {
     id: null,
     email: null,
