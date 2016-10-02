@@ -5,8 +5,8 @@
   <input class="item-search" name="item[name]" id="item[name]" type="text" placeholder="What are you packing?" required>
   <button type="submit">Add item</button>
 </form>
-<ul class="list-items">
+<ul class="list-items" data-id="{{id}}">
   {{#each contents}}
-  <li>{{item.name}}</li>
+  <li>{{item.name}} <a href="" class="delete-content" data-id="{{id}}">Delete</a></li>
   {{/each}}
 </ul>

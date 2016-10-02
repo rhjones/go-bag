@@ -22,14 +22,20 @@ const onNewList = (event) => {
 };
 
 const onGetList = (data) => {
+  console.log('data coming in to onGetList', data);
   let list_id = '';
+  // if onGetList is called after deleting content
+  if (Number.isInteger(Number.parseInt(data, 10))) {
+    console.log('data is an integer');
+    list_id = data;
+  }
   // if onGetList is called because user selected a list
-  if ($(event.target).is('a'))  {
+  else if ($(event.target).is('a'))  {
     console.log('event.target', event.target);
     event.preventDefault();
     list_id = $(event.target).attr('data-id');
   }
-  // if onGetList is called because user just added an item
+  // if onGetList is called because user just added content
   else {
     list_id = data.content.list.id;
   }
@@ -74,12 +80,27 @@ const onDeleteList = (event) => {
     .fail(ui.failure);
 };
 
+const onDeleteContent = (event) => {
+  event.preventDefault();
+  let content_id = $(event.target).attr('data-id');
+  console.log('parent of event.target is', $(event.target).parents('ul'));
+  let list_id = $(event.target).parents('ul').attr('data-id');
+  console.log('list id is', list_id);
+  api.deleteContent(content_id)
+    .done(function() {
+      console.log('successfully deleted content');
+      onGetList(list_id);
+    })
+    .fail(ui.failure);
+};
+
 const addHandlers = () => {
   $('.view').on('click', 'a.edit-list', onGetList);
   $('.view').on('submit', 'form.new-list-form', onNewList);
   $('.view').on('submit', 'form.add-item', onAddItemToList);
   $('.view').on('click', 'a.close-list', onGetAllLists);
   $('.view').on('click', 'a.delete-list', onDeleteList);
+  $('.view').on('click', 'a.delete-content', onDeleteContent);
 };
 
 module.exports = {

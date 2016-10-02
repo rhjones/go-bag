@@ -101,6 +101,16 @@ const deleteList = (list_id) => {
   });
 };
 
+const deleteContent = (content_id) => {
+  return $.ajax({
+    url: app.host + '/contents/' + content_id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+  });
+};
+
 module.exports = {
   newList,
   getList,
@@ -109,4 +119,5 @@ module.exports = {
   addNewItem,
   getAllLists,
   deleteList,
+  deleteContent,
 };
