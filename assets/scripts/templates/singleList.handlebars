@@ -7,6 +7,10 @@
 </form>
 <ul class="list-items" data-id="{{id}}">
   {{#each contents}}
-  <li>{{item.name}} <a href="" class="delete-content" data-id="{{id}}">Delete</a></li>
+  <li data-id="{{id}}" {{#if packed}}class="packed"{{/if}}>
+    <input type="checkbox" {{#if packed}}checked{{/if}} class="pack-content">
+    {{item.name}} 
+    <a href="" class="delete-content">Delete</a>
+  </li>
   {{/each}}
 </ul>

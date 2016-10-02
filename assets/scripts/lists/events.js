@@ -82,13 +82,34 @@ const onDeleteList = (event) => {
 
 const onDeleteContent = (event) => {
   event.preventDefault();
-  let content_id = $(event.target).attr('data-id');
+  let content_id = $(event.target).parent().attr('data-id');
   console.log('parent of event.target is', $(event.target).parents('ul'));
   let list_id = $(event.target).parents('ul').attr('data-id');
   console.log('list id is', list_id);
   api.deleteContent(content_id)
     .done(function() {
       console.log('successfully deleted content');
+      onGetList(list_id);
+    })
+    .fail(ui.failure);
+};
+
+const onTogglePackedContent = (event) => {
+  let content_id = $(event.target).parent().attr('data-id');
+  console.log('content id', content_id);
+  let packed = $(event.target).prop('checked');
+  console.log('packed?', packed);
+  let list_id = $(event.target).parents('ul').attr('data-id');
+  console.log('list id is', list_id);
+  let data = {
+    content: {
+      id: content_id,
+      packed: packed,
+    },
+  };
+  console.log(data);
+  api.updateContent(data)
+    .done(function() {
       onGetList(list_id);
     })
     .fail(ui.failure);
@@ -101,6 +122,7 @@ const addHandlers = () => {
   $('.view').on('click', 'a.close-list', onGetAllLists);
   $('.view').on('click', 'a.delete-list', onDeleteList);
   $('.view').on('click', 'a.delete-content', onDeleteContent);
+  $('.view').on('click', '.pack-content', onTogglePackedContent);
 };
 
 module.exports = {

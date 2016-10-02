@@ -111,6 +111,17 @@ const deleteContent = (content_id) => {
   });
 };
 
+const updateContent = (data) => {
+  return $.ajax({
+    url: app.host + '/contents/' + data.content.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data: data,
+  });
+};
+
 module.exports = {
   newList,
   getList,
@@ -120,4 +131,5 @@ module.exports = {
   getAllLists,
   deleteList,
   deleteContent,
+  updateContent,
 };
