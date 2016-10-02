@@ -1,6 +1,7 @@
 <a href="" class="close-list">Close</a>
-<form class="add-item">
+<form class="add-item" data-id="{{id}}">
   <h1>{{title}}</h1>
+  <small><a href="" class="edit-list">Edit</a> <a href="" class="delete-list" data-id={{id}}>Delete</a></small>
   <input type="hidden" name="content[list_id]" value="{{id}}">
   <input class="item-search" name="item[name]" id="item[name]" type="text" placeholder="What are you packing?" required>
   <button type="submit">Add item</button>

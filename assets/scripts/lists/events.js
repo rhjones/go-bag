@@ -115,14 +115,24 @@ const onTogglePackedContent = (event) => {
     .fail(ui.updateItemFailure);
 };
 
+const onEditList = (event) => {
+  event.preventDefault();
+  let list_id = $(event.target).parents('form').attr('data-id');
+  let list_title = $(event.target).parents('form').children('h1').html();
+  console.log(list_id);
+  console.log(list_title);
+  ui.editListTitle(list_id, list_title);
+};
+
 const addHandlers = () => {
-  $('.view').on('click', 'a.edit-list', onGetList);
+  $('.view').on('click', 'a.view-list', onGetList);
   $('.view').on('submit', 'form.new-list-form', onNewList);
   $('.view').on('submit', 'form.add-item', onAddItemToList);
   $('.view').on('click', 'a.close-list', onGetAllLists);
   $('.view').on('click', 'a.delete-list', onDeleteList);
   $('.view').on('click', 'a.delete-content', onDeleteContent);
   $('.view').on('click', '.pack-content', onTogglePackedContent);
+  $('.view').on('click', 'a.edit-list', onEditList);
 };
 
 module.exports = {

@@ -66,6 +66,14 @@ const renderAllLists = (lists) => {
   $('.profile-contents').html(allLists(lists));
 };
 
+const editListTitle = (list_id, list_title) => {
+  let listForm = $('form[data-id=' + list_id + ']');
+  let title = $(listForm).children('h1');
+  title.html('<input type="text" placeholder="' + list_title + '">');
+  console.log(list_title);
+  console.log(listForm);
+};
+
 module.exports = {
   failure,
   getFailure,
@@ -77,5 +85,6 @@ module.exports = {
   success,
   searchForItems,
   renderList,
-  renderAllLists
+  renderAllLists,
+  editListTitle,
 };
