@@ -7,14 +7,32 @@
   h1 {
     margin-top: 0;
   }
+
+
+  .welcome-overlay {
+    background: $transparentgray;
+    min-height: 100vh;
+    padding: 30vh 15px 15px;
+  }
+
+  .about {
+    min-height: 100vh;
+  }
+
+  a {
+    color: $white;
+
+    &.btn-home:hover {
+      background: $white;
+      color: $black;
+    }
+  }
+
 }
 
-.welcome-overlay {
-  background: $transparentgray;
-  min-height: 100vh;
-  padding: 30vh 15px 15px;
-}
-
-.about {
-  min-height: 100vh;
+.btn-home {
+  border: 1px solid $white;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 1em;
 }
