@@ -1,3 +1,14 @@
+.home {
+  a {
+    color: $white;
+
+    &.btn-home:hover {
+      background: $white;
+      color: $black;
+    }
+  }
+}
+
 .welcome {
   background: url('../img/airport.jpg') no-repeat;
   background-size: cover;
@@ -7,27 +18,17 @@
   h1 {
     margin-top: 0;
   }
+}
 
+.welcome-overlay {
+  background: $transparentgray;
+  min-height: 100vh;
+  padding: 30vh 15px 15px;
+}
 
-  .welcome-overlay {
-    background: $transparentgray;
-    min-height: 100vh;
-    padding: 30vh 15px 15px;
-  }
-
-  .about {
-    min-height: 100vh;
-  }
-
-  a {
-    color: $white;
-
-    &.btn-home:hover {
-      background: $white;
-      color: $black;
-    }
-  }
-
+.welcome-cont {
+  min-height: 100vh;
+  text-align: center;
 }
 
 .btn-home {
@@ -35,4 +36,21 @@
   border-radius: 10px;
   display: inline-block;
   padding: 1em;
+}
+
+.branding {
+  min-height: 50vh;
+  padding: 1em;
+}
+
+.auth-buttons {
+  background: url('../img/train.jpg') no-repeat;
+  background-size: cover;
+  min-height: 50vh;
+}
+
+.auth-buttons-overlay {
+  background: $transparentgray;
+  min-height: 50vh;
+  padding: 15vh 15px 15px;
 }
