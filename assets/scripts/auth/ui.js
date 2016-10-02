@@ -11,6 +11,9 @@ const messages = {
   passwordChangeFail: 'Unable to change password.',
 };
 
+const logInForm = require('../templates/logIn.handlebars');
+const signUpForm = require('../templates/signUp.handlebars');
+
 const renderWarning = (message) => {
   $('.message').html(warning(message));
 };
@@ -49,14 +52,22 @@ const passwordChangeSuccess = () => {
 };
 
 const showSignUp = () => {
-  const signUpForm = require('../templates/signUp.handlebars');
   $('.auth-forms').html(signUpForm);
 };
 
 const showLogIn = () => {
   console.log('clicked on log in link');
-  const logInForm = require('../templates/logIn.handlebars');
   $('.auth-forms').html(logInForm);
+};
+
+const showAuth = (authForm) => {
+  const auth = require('../templates/auth.handlebars');
+  $('.view').html(auth);
+  if (authForm === 'sign-up') {
+    showSignUp();
+  } else if (authForm === 'log-in') {
+    showLogIn();
+  }
 };
 
 module.exports = {
@@ -69,4 +80,5 @@ module.exports = {
   passwordChangeSuccess,
   showSignUp,
   showLogIn,
+  showAuth,
 };
