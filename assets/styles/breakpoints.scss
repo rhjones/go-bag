@@ -1,0 +1,13 @@
+@import 'breakpoint';
+
+@include breakpoint(sm) {
+  header {
+    h1 {
+      font-size: 7em;
+    }
+
+    p {
+      font-size: 1.5em;
+    }
+  }
+}

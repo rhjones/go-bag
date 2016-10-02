@@ -9,6 +9,12 @@
   }
 }
 
+.welcome-overlay {
+  background: $transparentgray;
+  min-height: 100vh;
+  padding: 30vh 15px 15px;
+}
+
 .about {
   min-height: 100vh;
 }

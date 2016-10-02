@@ -1,0 +1,19 @@
+// these match Bootstrap's breakpoints
+// with the exception of the break b/w xs and sm, which is at 500px
+// Mixin is Tim Knight's, based on this article: http://bit.ly/2cbUipj
+
+@mixin breakpoint($class) {
+  @if $class == tiny {
+    @media (max-width: 400px) { @content; }
+  } @else if $class == xs {
+    @media (min-width: 401px) { @content; }
+  } @else if $class == sm {
+    @media (min-width: 500px) { @content; }
+  } @else if $class == md {
+    @media (min-width: 992px) { @content; }
+  } @else if $class == lg {
+    @media (min-width: 1200px) { @content; }
+  } @else {
+    @warn 'Breakpoint mixin supports: tiny, xs, sm, md, lg';
+  }
+}
