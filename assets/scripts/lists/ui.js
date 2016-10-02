@@ -69,7 +69,7 @@ const renderAllLists = (lists) => {
 const editListTitle = (list_id, list_title) => {
   let listForm = $('form[data-id=' + list_id + ']');
   let title = $(listForm).children('h1');
-  title.html('<input type="text" placeholder="' + list_title + '">');
+  title.html('<input type="text" value="' + list_title + '">');
   console.log(list_title);
   console.log(listForm);
 };
