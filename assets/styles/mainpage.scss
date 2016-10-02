@@ -1,0 +1,14 @@
+.welcome {
+  background: url('../img/airport.jpg') no-repeat;
+  background-size: cover;
+  color: $white;
+  min-height: 100vh;
+
+  h1 {
+    margin-top: 0;
+  }
+}
+
+.about {
+  min-height: 100vh;
+}

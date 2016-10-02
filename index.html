@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Go Bag</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body class="container-fluid">
-      <div class="message">
-      </div>
+    <body>
+      <div class="home">
+        <div class="message">
+          test
+        </div>
 
-      <div class="auth-forms">
-        <form id="log-in">
-          <div>
-            <label for="credentials[email]">Email</label>
-            <input name="credentials[email]" id="credentials[email]" type="email" placeholder="Email" required>
+        <div class="welcome">
+          <h1><i class="fa fa-suitcase" aria-hidden="true"></i> Go Bag</h1>
+          <p class="tagline">packing lists for frequent travelers</p>
+          <a href="#" role="button">sign up</a>
+          <a href="#" role="button">learn more</a>
+          <a href="#">log in</a>
+        </div>
+      
+        <div class="about">
+          <div class="about-text">
+          <i class="fa fa-suitcase" aria-hidden="true"></i>
+          <p>No more sticky notes. No more scraps of paper. No more forgetting your laptop charger or your favorite swimsuit.</p>
           </div>
-          <div>
-            <label for="credentials[password]">Password</label>
-            <input name="credentials[password]" id="credentials[password]" type="password" placeholder="Password" required>
+
+          <div class="auth-buttons">
+            <a href="#" role="button">sign up</a>
+            <a href="#" role="button">log in</a>
           </div>
-          <button type="submit">Log In</button>
-        </form>
-
-        <a class="sign-up" role="button" href="#">Sign Up</a>
-      </div>
-
-      <div class="user-nav">
-        <a class="log-out" role="button" href="#">Log Out</a>
-        <a class="change-password-link" role="button" href="#">Account</a>
+        </div>
       </div>
 
       <div class="view">
