@@ -229,7 +229,7 @@ webpackJsonp([0],[
 	'use strict';
 
 	var app = {
-	  host: 'http://localhost:3000',
+	  host: 'https://go-bag.herokuapp.com/',
 	  user: {
 	    id: null,
 	    email: null,
