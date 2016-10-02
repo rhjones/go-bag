@@ -123,11 +123,9 @@ const onTogglePackedContent = (event) => {
 
 const onEditList = (event) => {
   event.preventDefault();
-  let list_id = $(event.target).parents('form').attr('data-id');
-  let list_title = $(event.target).parents('form').children('h1').html();
-  console.log(list_id);
-  console.log(list_title);
-  ui.editListTitle(list_id, list_title);
+  let title = $(event.target).parents('form').find('h1').html();
+  console.log(title);
+  ui.editListTitle(title);
 };
 
 const addHandlers = () => {

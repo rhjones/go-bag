@@ -66,12 +66,9 @@ const renderAllLists = (lists) => {
   $('.profile-contents').html(allLists(lists));
 };
 
-const editListTitle = (list_id, list_title) => {
-  let listForm = $('form[data-id=' + list_id + ']');
-  let title = $(listForm).children('h1');
-  title.html('<input type="text" value="' + list_title + '">');
-  console.log(list_title);
-  console.log(listForm);
+const editListTitle = (title) => {
+  let listHeaderEdit = require('../templates/listHeaderEdit.handlebars');
+  $('.list-header').html(listHeaderEdit({title}));
 };
 
 module.exports = {
