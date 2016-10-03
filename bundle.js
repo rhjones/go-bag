@@ -1800,7 +1800,7 @@ webpackJsonp([0],[
 
 	var onDeleteContent = function onDeleteContent(event) {
 	  event.preventDefault();
-	  var content_id = $(event.target).parent().attr('data-id');
+	  var content_id = $(event.target).parents('li').attr('data-id');
 	  console.log('parent of event.target is', $(event.target).parents('ul'));
 	  var list_id = $(event.target).parents('ul').attr('data-id');
 	  console.log('list id is', list_id);
