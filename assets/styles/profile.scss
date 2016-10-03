@@ -54,6 +54,7 @@
       color: $blue;
       display: inline-block;
       float: right;
+      text-decoration: none;
     }
   }
 
@@ -102,6 +103,7 @@
   .delete-list {
     float: right;
     padding-left: .5em;
+    text-decoration: none;
   }
 }
 
@@ -117,6 +119,7 @@
 
     a {
       padding-left: .5em;
+      text-decoration: none;
     }
   }
 }
