@@ -1,8 +1,12 @@
 <nav>
   {{#if id}}
     <div class="user-nav">
-      <a class="log-out" href="">Log Out</a>
-      <a class="change-password-link" href="">Account</a>
+      <a class="log-out" title="Log out" href="">
+        <i class="fa fa-power-off" aria-hidden="true"></i>
+      </a>
+      <a class="change-password-link" title="Change password" href="">
+        <i class="fa fa-gear aria-hidden="true"></i>
+      </a>
     </div>
   {{/if}}
   <span class="logo">
