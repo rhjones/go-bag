@@ -57,8 +57,6 @@ After that: cleanup, bug fixing, and tweaking.
 
 ## Dependencies / Tech / Resources
 
-Install with `npm install`.
-
 - [Webpack](https://webpack.github.io) for `require` system, build pipeline, and dev server
 - [Bootstrap](http://getbootstrap.com)
 - [Handlebars.js](http://handlebarsjs.com)
