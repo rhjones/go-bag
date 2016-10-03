@@ -68,6 +68,13 @@
     &.title-field {
       max-width: 100%;
     }
+
+    &.pack-content {
+      height: 1em;
+      margin: 0;
+      max-width: 1em;
+      width: 1em;
+    }
   }
 
   form {
@@ -92,7 +99,8 @@
   }
 }
 
-.all-lists {
+.all-lists,
+.list-items {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -102,13 +110,23 @@
     clear: both;
     padding: .5em 0;
 
+    &:hover {
+      background: $lightgray;
+    }
+
     &:first-child {
       border-top: 1px solid $darkgray;
+    }
+
+    &.packed {
+      color: $midgray;
+      text-decoration: line-through;
     }
   }
 
   .clone-list,
-  .delete-list {
+  .delete-list,
+  .delete-content {
     float: right;
     padding-left: .5em;
     text-decoration: none;

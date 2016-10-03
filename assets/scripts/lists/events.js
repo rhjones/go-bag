@@ -183,6 +183,7 @@ const addHandlers = () => {
   $('.view').on('click', 'a.delete-content', onDeleteContent);
   $('.view').on('click', '.pack-content', onTogglePackedContent);
   $('.view').on('click', 'a.edit-list', onEditList);
+  $('.view').on('click', '.list-title-edit', onEditList);
   $('.view').on('click', 'a.update-list', onUpdateList);
   $('.view').on('click', 'a.cancel-edit-list', onCancelEditList);
   $('.view').on('click', 'a.clone-list', onCloneList);
