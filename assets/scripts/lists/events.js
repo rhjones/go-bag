@@ -97,7 +97,7 @@ const onDeleteList = (event) => {
 
 const onDeleteContent = (event) => {
   event.preventDefault();
-  let content_id = $(event.target).parent().attr('data-id');
+  let content_id = $(event.target).parents('li').attr('data-id');
   console.log('parent of event.target is', $(event.target).parents('ul'));
   let list_id = $(event.target).parents('ul').attr('data-id');
   console.log('list id is', list_id);
