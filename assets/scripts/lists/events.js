@@ -5,9 +5,9 @@ const api = require('./api');
 const ui = require('./ui');
 
 const onGetAllLists = () => {
-  if ($(event.target).is('a'))  {
+  // if ($(event.target).is('a'))  {
     event.preventDefault();
-  }
+  // 
   api.getAllLists()
     .done(ui.renderAllLists)
     .fail(ui.getFailure);
@@ -30,7 +30,7 @@ const onGetList = (data) => {
     list_id = data;
   }
   // if onGetList is called because user selected a list
-  else if ($(event.target).is('a'))  {
+  else if ($(event.target).is('a') || $(event.target).is('i'))  {
     console.log('event.target', event.target);
     event.preventDefault();
     list_id = $(event.target).attr('data-id');
@@ -132,19 +132,27 @@ const onTogglePackedContent = (event) => {
 
 const onEditList = (event) => {
   event.preventDefault();
-  let title = $(event.target).parents('form').find('h1').html();
+  let title = $(event.target).parents('form').find('.list-title').html();
   console.log(title);
   ui.editListTitle(title);
 };
 
+const onCancelEditList = (event) => {
+  event.preventDefault();
+  let list_id = $(event.target).parents('form.add-item').attr('data-id');
+  console.log(list_id);
+  onGetList(list_id);
+};
+
 const onUpdateList = (event) => {
   event.preventDefault();
-  let list_id = ($(event.target).parents('form').attr('data-id'));
+  let list_id = ($(event.target).parents('form.add-item').attr('data-id'));
   console.log(list_id);
-  let formData = getFormFields(document.getElementsByTagName('form')[0]);
+  let formData = getFormFields(document.getElementsByClassName('add-item')[0]);
+  console.log("edit list form data", formData);
   let data = {
     list: {
-      id: formData.content.list_id,
+      id: list_id,
       title: formData.list.title,
     }
   };
@@ -161,6 +169,11 @@ const onUpdateList = (event) => {
     .fail(ui.failure);
 };
 
+const onToggleNewListForm = () => {
+  event.preventDefault();
+  ui.toggleNewListForm();
+};
+
 const addHandlers = () => {
   $('.view').on('click', 'a.view-list', onGetList);
   $('.view').on('submit', 'form.new-list-form', onNewList);
@@ -170,8 +183,12 @@ const addHandlers = () => {
   $('.view').on('click', 'a.delete-content', onDeleteContent);
   $('.view').on('click', '.pack-content', onTogglePackedContent);
   $('.view').on('click', 'a.edit-list', onEditList);
+  $('.view').on('click', '.list-title-edit', onEditList);
   $('.view').on('click', 'a.update-list', onUpdateList);
+  $('.view').on('click', 'a.cancel-edit-list', onCancelEditList);
   $('.view').on('click', 'a.clone-list', onCloneList);
+  $('.view').on('click', 'a.new-list', onToggleNewListForm);
+  $('.view').on('click', 'a.cancel-new-list', onToggleNewListForm);
 };
 
 module.exports = {

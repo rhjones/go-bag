@@ -27,7 +27,7 @@ const onLogIn = (event) => {
 const onLogOut = (event) => {
   event.preventDefault();
   api.logOut()
-    .done(ui.logOutSuccess)
+    .done(ui.logOut)
     .fail(ui.logOutFailure);
 };
 
@@ -37,10 +37,6 @@ const onChangePassword = (event) => {
   api.changePassword(data)
     .done(ui.passwordChangeSuccess)
     .fail(ui.passwordChangeFailure);
-};
-
-const onToggleChangePassword = () => {
-  ui.toggleChangePassword();
 };
 
 const onShowAuth = () => {
@@ -59,15 +55,19 @@ const onGoHome = () => {
   ui.goHome();
 };
 
+const onToggleChangePassword = () => {
+  event.preventDefault();
+  ui.toggleChangePassword();
+};
+
 const addHandlers = () => {
   $('.view').on('submit', '#sign-up', onSignUp);
   $('.view').on('submit', '#log-in', onLogIn);
-  $('.log-out').on('click', onLogOut);
-  $('#change-password').on('submit', onChangePassword);
-  $('.view').on('click', '.auth-forms .log-in', ui.showLogIn);
-  $('.view').on('click', '.auth-forms a.sign-up', ui.showSignUp);
-  $('.change-password-link').on('click', onToggleChangePassword);
-  $('.view').on('click', '.auth', onShowAuth);
+  $('.view').on('click', '.log-out', onLogOut);
+  $('.view').on('submit', '#change-password', onChangePassword);
+  $('.view').on('click', '.log-in', onShowAuth);
+  $('.view').on('click', '.sign-up', onShowAuth);
+  $('.view').on('click', '.change-password-link', onToggleChangePassword);
   $('.view').on('click', '.home-link', onGoHome);
 };
 

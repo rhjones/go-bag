@@ -1,7 +1,21 @@
 <nav>
+  {{#if id}}
+    <div class="user-nav">
+      <a class="log-out" title="Log out" href="">
+        <i class="fa fa-power-off" aria-hidden="true"></i>
+      </a>
+      <a class="change-password-link" title="Change password" href="">
+        <i class="fa fa-gear aria-hidden="true"></i>
+      </a>
+    </div>
+  {{/if}}
   <span class="logo">
     <a href="" class="home-link">
-      <i class="fa fa-suitcase" aria-hidden="true"></i> go bag
+      <i class="fa fa-suitcase" aria-hidden="true"></i><span class="app-name"> go bag</span>
     </a>
   </span>
+  
+  {{#if id}}
+    {{> passwordForm}}
+  {{/if}}
 </nav>

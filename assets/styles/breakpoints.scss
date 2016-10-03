@@ -1,5 +1,11 @@
 @import 'breakpoint';
 
+@include breakpoint(tiny) {
+  .app-name {
+    display: none;
+  }
+}
+
 @include breakpoint(sm) {
   header {
     h1 {
@@ -14,5 +20,19 @@
   .branding {
     margin: 0 auto;
     max-width: 60%;
+  }
+
+  .profile-contents {
+    width: 60%;
+  }
+}
+
+@include breakpoint(md) {
+  .profile-contents {
+    width: 50%;
+  }
+
+  .list-title {
+    max-width: 85%;
   }
 }

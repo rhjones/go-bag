@@ -1,18 +1,12 @@
 nav {
   background: $black;
   color: $white;
+  overflow: auto;
   padding: .25em 1em;
   width: 100%;
 
   i {
     margin-right: .25em;
-  }
-
-  a,
-  a:hover,
-  a:active,
-  a:visited {
-    color: $white;
   }
 
   .logo {
@@ -30,7 +24,7 @@ nav {
     a {
       display: block;
       float: right;
-      padding: .5em;
+      padding: .5em 0 .5em .25em;
     }
   }
 

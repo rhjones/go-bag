@@ -1,0 +1,160 @@
+.user-profile {
+  color: $darkgray;
+
+  .greeting {
+    background: url('../img/airplane.jpg') no-repeat;
+    background-size: cover;
+    color: $white;
+    text-align: center;
+    width: 100%;
+
+    .overlay {
+      background: $transparentblack;
+      min-height: 100%;
+      padding: 1em;
+    }
+  }
+}
+
+.new-list-form {
+  display: none;
+}
+
+.pwd-form {
+  clear: both;
+  display: none;
+}
+
+.change-password {
+  float: right;
+  max-width: 290px;
+
+  button {
+    padding: .5em;
+    width: 100%;
+  }
+
+  label {
+    display: none;
+  }
+
+  .user-email {
+    word-wrap: break-word;
+  }
+}
+
+.profile-contents {
+  margin: 0 auto;
+  width: 90%;
+
+  a {
+    color: $darkgray;
+
+    &.new-list {
+      color: $blue;
+      display: inline-block;
+      float: right;
+      text-decoration: none;
+    }
+
+    &.update-list {
+      color: $blue;
+    }
+  }
+
+  input {
+    max-width: 75%;
+
+    &.title-field {
+      max-width: 100%;
+    }
+
+    &.pack-content {
+      height: 1em;
+      margin: 0;
+      max-width: 1em;
+      width: 1em;
+    }
+  }
+
+  form {
+    clear: both;
+    margin-bottom: .5em;
+
+    label {
+      display: none;
+    }
+
+    button {
+      background: none;
+      border: 0;
+      color: $blue;
+      font-size: 1.5em;
+      padding: 0;
+    }
+
+    .cancel-new-list {
+      font-size: 1.5em;
+    }
+  }
+}
+
+.all-lists,
+.list-items {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    border-bottom: 1px solid $darkgray;
+    clear: both;
+    padding: .5em 0;
+
+    &:hover {
+      background: $lightgray;
+    }
+
+    &:first-child {
+      border-top: 1px solid $darkgray;
+    }
+
+    &.packed {
+      color: $midgray;
+      text-decoration: line-through;
+    }
+  }
+
+  .clone-list,
+  .delete-list,
+  .delete-content {
+    float: right;
+    padding-left: .5em;
+    text-decoration: none;
+  }
+}
+
+.view-list {
+  display: inline-block;
+  max-width: 80%;
+}
+
+.list-title {
+  display: inline-block;
+  max-width: 70%;
+}
+
+.list-header {
+  small {
+    float: right;
+    font-size: $font-size;
+
+    a {
+      padding-left: .5em;
+      text-decoration: none;
+    }
+  }
+}
+
+
+
+

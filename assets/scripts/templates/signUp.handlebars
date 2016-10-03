@@ -1,17 +1,20 @@
-<form id="sign-up" class="sign-up">
-  <div>
-    <label for="credentials[email]">Email</label>
-    <input name="credentials[email]" id="credentials[email]" type="email" placeholder="Email" required>
-  </div>
-  <div>
-    <label for="credentials[password]">Password</label>
-    <input name="credentials[password]" id="credentials[password]" type="password" placeholder="Password" required>
-  </div>
-  <div>
-    <label for="credentials[password_confirmation]">Confirm password</label>
-    <input name="credentials[password_confirmation]" id="credentials[password_confirmation]" type="password" placeholder="Confirm password" required>
-  </div>
-  <button type="submit">Sign Up</button>
-</form>
+<div class="wrapper">
+  <h1>Sign Up</h1>
+  <form id="sign-up">
+    <div>
+      <label for="credentials[email]">Email</label>
+      <input name="credentials[email]" id="credentials[email]" type="email" placeholder="Email" required>
+    </div>
+    <div>
+      <label for="credentials[password]">Password</label>
+      <input name="credentials[password]" id="credentials[password]" type="password" placeholder="Password" required>
+    </div>
+    <div>
+      <label for="credentials[password_confirmation]">Confirm password</label>
+      <input name="credentials[password_confirmation]" id="credentials[password_confirmation]" type="password" placeholder="Confirm password" required>
+    </div>
+    <p><button type="submit" class="btn-standard">Sign Up</button></p>
+  </form>
 
-<a class="log-in" role="button" href="#">Log In</a>
+  <p>Have an account? <a class="log-in" role="button" href="">Log in.</a></p>
+</div>

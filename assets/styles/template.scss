@@ -4,8 +4,52 @@ body {
   padding: 0;
 }
 
+a,
+a:hover,
+a:active,
+a:visited {
+  color: $white;
+}
+
+.btn-standard {
+  background: none;
+  border: 1px solid $white;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 1em;
+}
+
+.btn-standard:hover {
+  background: $white;
+  color: $black;
+}
+
+input {
+  background-color: $white;
+  border: 1px solid $black;
+  border-radius: 0;
+  box-shadow: none;
+  color: $black;
+  font-size: 1em;
+  height: 2em;
+  margin: .5em 0;
+  padding: .25em;
+  width: 100%;
+}
+
 // come back to this
 .message {
-  position: absolute;
-  top: 0;
+  height: 2em;
+  padding: .5em;
+  text-align: center;
+
+  .warning::before {
+    content: '\F06A  ';
+    font-family: 'FontAwesome';
+  }
+
+  .success::before {
+    content: '\F058  ';
+    font-family: 'FontAwesome';
+  }
 }
