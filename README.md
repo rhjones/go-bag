@@ -1,6 +1,12 @@
 # Go Bag
 
-A packing list app.
+Packing lists for frequent travelers.
+
+The problem:
+
+This repo contains the client side code. The app depends on a Rails API, which is at [rebekahheacock/go-bag-api](https://github.com/rebekahheacock/go-bag-api).
+
+
 
 ## Dependencies
 
