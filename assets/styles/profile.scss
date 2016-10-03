@@ -1,15 +1,23 @@
 .user-profile {
   color: $darkgray;
+
+  h1 {
+    background: url('../img/airplane.jpg') no-repeat;
+    background-size: cover;
+    color: $white;
+    padding: 1em;
+    width: 100%;
+  }
 }
 
 .pwd-form {
-  clear: right;
+  clear: both;
   display: none;
 }
 
 .change-password {
   float: right;
-  max-width: 300px;
+  max-width: 290px;
 
   button {
     padding: .5em;
@@ -19,4 +27,10 @@
   label {
     display: none;
   }
+
+  .user-email {
+    word-wrap: break-word;
+  }
 }
+
+
