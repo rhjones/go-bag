@@ -26,3 +26,13 @@
     width: 60%;
   }
 }
+
+@include breakpoint(md) {
+  .profile-contents {
+    width: 50%;
+  }
+
+  .list-title {
+    max-width: 85%;
+  }
+}
