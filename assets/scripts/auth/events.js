@@ -27,7 +27,7 @@ const onLogIn = (event) => {
 const onLogOut = (event) => {
   event.preventDefault();
   api.logOut()
-    .done(ui.logOutSuccess)
+    .done(ui.logOut)
     .fail(ui.logOutFailure);
 };
 
@@ -62,7 +62,7 @@ const onGoHome = () => {
 const addHandlers = () => {
   $('.view').on('submit', '#sign-up', onSignUp);
   $('.view').on('submit', '#log-in', onLogIn);
-  $('.log-out').on('click', onLogOut);
+  $('.view').on('click', '.log-out', onLogOut);
   $('#change-password').on('submit', onChangePassword);
   $('.view').on('click', '.log-in', onShowAuth);
   $('.view').on('click', '.sign-up', onShowAuth);

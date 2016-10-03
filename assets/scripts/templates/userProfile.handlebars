@@ -1,18 +1,18 @@
-{{> nav}}
-
-<div class="message">
-</div>
-
 <div class="user-profile">
+  {{> nav}}
 
-<div class="user-nav">
-  <a class="log-out" href="#">Log Out</a>
-  <a class="change-password-link" href="#">Account</a>
-</div>
+  <div class="message">
+  </div>
+
+  <div class="user-nav">
+    <a class="log-out" href="">Log Out</a>
+    <a class="change-password-link" href="">Account</a>
+  </div>
 
   <h1>Welcome, {{email}}!</h1>
 
   <div class="profile-contents">
     {{> allLists}}
   </div>
+
 </div>

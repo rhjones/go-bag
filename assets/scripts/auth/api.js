@@ -21,14 +21,13 @@ const logIn = (data, textStatus, jqXHR, signUpData) => {
 };
 
 const logOut = () => {
-  let request = $.ajax({
+  return $.ajax({
     url: app.host + '/sign-out/' + app.user.id,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
   });
-  return request;
 };
 
 const changePassword = (data) => {

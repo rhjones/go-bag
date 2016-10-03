@@ -79,6 +79,15 @@ const goHome = () => {
   }
 };
 
+const logOut = () => {
+  app.user = {
+    id: null,
+    email: null,
+    token: null,
+  };
+  goHome();
+};
+
 module.exports = {
   logInFailure,
   logOutFailure,
@@ -91,4 +100,5 @@ module.exports = {
   showLogIn,
   showAuth,
   goHome,
+  logOut,
 };
