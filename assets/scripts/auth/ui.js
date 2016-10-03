@@ -10,6 +10,15 @@ const messages = {
   passwordChangeSuccess: 'Password changed.',
 };
 
+const greetings = [
+  '"Adventure is worthwhile."" – Aesop',
+  '"The gladdest moment in human life, me thinks, is a departure into unknown lands." – Sir Richard Burton',
+  '"People don’t take trips, trips take people." – John Steinbeck',
+  '"Life is either a daring adventure or nothing." – Helen Keller',
+  '"Not all those who wander are lost." – J.R.R. Tolkien',
+  '"I haven’t been everywhere, but it’s on my list." – Susan Sontag',
+];
+
 const home = require('../templates/home.handlebars');
 const logInForm = require('../templates/logIn.handlebars');
 const signUpForm = require('../templates/signUp.handlebars');
@@ -44,6 +53,7 @@ const signUpFailure = () => {
 
 const renderProfile = (data) => {
   app.user = data.user;
+  app.user.greeting = greetings[Math.floor(Math.random() * greetings.length)];
   let user = app.user;
   console.log('app.user is', user);
   const userProfile = require('../templates/userProfile.handlebars');
