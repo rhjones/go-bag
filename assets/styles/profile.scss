@@ -1,13 +1,18 @@
 .user-profile {
   color: $darkgray;
 
-  h1 {
+  .greeting {
     background: url('../img/airplane.jpg') no-repeat;
     background-size: cover;
     color: $white;
-    padding: 1em;
-    width: 100%;
     text-align: center;
+    width: 100%;
+
+    .overlay {
+      background: $transparentblack;
+      min-height: 100%;
+      padding: 1em;
+    }
   }
 }
 
@@ -32,6 +37,11 @@
   .user-email {
     word-wrap: break-word;
   }
+}
+
+.profile-contents {
+  margin: 0 auto;
+  width: 90%;
 }
 
 
