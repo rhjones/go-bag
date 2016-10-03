@@ -16,6 +16,7 @@ const messages = {
 
 const renderWarning = (message) => {
   $('.message').html(warning(message));
+  $('.message').children().delay(3000).fadeToggle('slow');
 };
 
 const failure = () => {
