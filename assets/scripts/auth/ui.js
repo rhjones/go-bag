@@ -66,6 +66,7 @@ const logOutSuccess = () => {
 };
 
 const toggleChangePassword = () => {
+  $('.pwd-form').find('input').val('');
   $('.pwd-form').slideToggle();
 };
 
