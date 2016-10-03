@@ -56,6 +56,18 @@
       float: right;
       text-decoration: none;
     }
+
+    &.update-list {
+      color: $blue;
+    }
+  }
+
+  input {
+    max-width: 75%;
+
+    &.title-field {
+      max-width: 100%;
+    }
   }
 
   form {
@@ -64,10 +76,6 @@
 
     label {
       display: none;
-    }
-
-    input {
-      max-width: 75%;
     }
 
     button {

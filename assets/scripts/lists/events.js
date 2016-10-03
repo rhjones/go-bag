@@ -30,7 +30,7 @@ const onGetList = (data) => {
     list_id = data;
   }
   // if onGetList is called because user selected a list
-  else if ($(event.target).is('a'))  {
+  else if ($(event.target).is('a') || $(event.target).is('i'))  {
     console.log('event.target', event.target);
     event.preventDefault();
     list_id = $(event.target).attr('data-id');
@@ -137,6 +137,13 @@ const onEditList = (event) => {
   ui.editListTitle(title);
 };
 
+const onCancelEditList = (event) => {
+  event.preventDefault();
+  let list_id = $(event.target).parents('form.add-item').attr('data-id');
+  console.log(list_id);
+  onGetList(list_id);
+};
+
 const onUpdateList = (event) => {
   event.preventDefault();
   let list_id = ($(event.target).parents('form.add-item').attr('data-id'));
@@ -177,6 +184,7 @@ const addHandlers = () => {
   $('.view').on('click', '.pack-content', onTogglePackedContent);
   $('.view').on('click', 'a.edit-list', onEditList);
   $('.view').on('click', 'a.update-list', onUpdateList);
+  $('.view').on('click', 'a.cancel-edit-list', onCancelEditList);
   $('.view').on('click', 'a.clone-list', onCloneList);
   $('.view').on('click', 'a.new-list', onToggleNewListForm);
   $('.view').on('click', 'a.cancel-new-list', onToggleNewListForm);
