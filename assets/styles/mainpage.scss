@@ -1,14 +1,3 @@
-.home {
-  a {
-    color: $white;
-
-    &.btn-home:hover {
-      background: $white;
-      color: $black;
-    }
-  }
-}
-
 .welcome {
   background: url('../img/airport.jpg') no-repeat;
   background-size: cover;
@@ -25,13 +14,6 @@
 .welcome-cont {
   min-height: 100vh;
   text-align: center;
-}
-
-.btn-home {
-  border: 1px solid $white;
-  border-radius: 10px;
-  display: inline-block;
-  padding: 1em;
 }
 
 .branding {

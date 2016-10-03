@@ -4,6 +4,26 @@ body {
   padding: 0;
 }
 
+a,
+a:hover,
+a:active,
+a:visited {
+  color: $white;
+}
+
+.btn-standard {
+  border: 1px solid $white;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 1em;
+  background: none;
+}
+
+.btn-standard:hover {
+  background: $white;
+  color: $black;
+}
+
 // come back to this
 .message {
   position: absolute;

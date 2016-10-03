@@ -4,8 +4,9 @@
   min-height: 100vh;
 
   .wrapper {
-    max-width: 225px;
+    color: $white;
     margin: 0 auto;
+    max-width: 225px;
     padding: 1em;
     text-align: center;
   }
@@ -18,11 +19,12 @@
     font-size: 1em;
     height: 2em;
     margin: .5em 0;
-    width: 100%;
     padding: .25em;
+    width: 100%;
   }
 
   label {
     display: none;
   }
+
 }
