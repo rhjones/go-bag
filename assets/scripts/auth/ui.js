@@ -17,11 +17,13 @@ const signUpForm = require('../templates/signUp.handlebars');
 const renderWarning = (message) => {
   const warning = require('../templates/warning.handlebars');
   $('.message').html(warning(message));
+  $('.message').children().delay(3000).fadeToggle('slow');
 };
 
 const renderSuccess = (message) => {
   const success = require('../templates/success.handlebars');
   $('.message').html(success(message));
+  $('.message').children().delay(3000).fadeToggle('slow');
 };
 
 const logInFailure = () => {

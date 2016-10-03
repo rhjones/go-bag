@@ -39,6 +39,17 @@ input {
 
 // come back to this
 .message {
-  position: absolute;
-  top: 0;
+  height: 2em;
+  padding: .5em;
+  text-align: center;
+
+  .warning::before {
+    content: '\F06A  ';
+    font-family: 'FontAwesome';
+  }
+
+  .success::before {
+    content: '\F058  ';
+    font-family: 'FontAwesome';
+  }
 }
