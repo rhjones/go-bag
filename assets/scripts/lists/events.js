@@ -161,6 +161,11 @@ const onUpdateList = (event) => {
     .fail(ui.failure);
 };
 
+const onToggleNewListForm = () => {
+  event.preventDefault();
+  ui.toggleNewListForm();
+};
+
 const addHandlers = () => {
   $('.view').on('click', 'a.view-list', onGetList);
   $('.view').on('submit', 'form.new-list-form', onNewList);
@@ -172,6 +177,8 @@ const addHandlers = () => {
   $('.view').on('click', 'a.edit-list', onEditList);
   $('.view').on('click', 'a.update-list', onUpdateList);
   $('.view').on('click', 'a.clone-list', onCloneList);
+  $('.view').on('click', 'a.new-list', onToggleNewListForm);
+  $('.view').on('click', 'a.cancel-new-list', onToggleNewListForm);
 };
 
 module.exports = {

@@ -1,14 +1,6 @@
 <h1>Lists 
   <a class="new-list" title="Create a list" role="button" href=""><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
 </h1>
-
-
-<form class="new-list-form">
-  <label for="list[title]">Title</label>
-  <input name="list[title]" id="list[title]" type="text" placeholder="Where are you going?" required>
-  <button type="submit"><i class="fa fa-check-circle-o" aria-hidden="true"></i></button>
-  <a class="cancel-new-list" href="">Cancel</a>
-</form>
   
 <ul class="all-lists">
   {{#each lists}}

@@ -72,6 +72,21 @@ const editListTitle = (title) => {
   $('.list-header').html(listHeaderEdit({title}));
 };
 
+const toggleNewListForm = () => {
+  let newListForm = require('../templates/newListForm.handlebars');
+  if ($('.new-list-form').length > 0) {
+    console.log($('.new-list-form'));
+    console.log("new list form exists");
+    $('.new-list').toggle();
+    $('.new-list-form').slideToggle();
+  } else {
+    console.log("new list form doesn't exist");
+    $('ul.all-lists').before(newListForm);
+    $('.new-list').toggle();
+    $('.new-list-form').slideToggle();
+  }
+};
+
 module.exports = {
   failure,
   getFailure,
@@ -85,4 +100,5 @@ module.exports = {
   renderList,
   renderAllLists,
   editListTitle,
+  toggleNewListForm,
 };
