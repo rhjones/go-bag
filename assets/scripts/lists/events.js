@@ -132,19 +132,20 @@ const onTogglePackedContent = (event) => {
 
 const onEditList = (event) => {
   event.preventDefault();
-  let title = $(event.target).parents('form').find('h1').html();
+  let title = $(event.target).parents('form').find('.list-title').html();
   console.log(title);
   ui.editListTitle(title);
 };
 
 const onUpdateList = (event) => {
   event.preventDefault();
-  let list_id = ($(event.target).parents('form').attr('data-id'));
+  let list_id = ($(event.target).parents('form.add-item').attr('data-id'));
   console.log(list_id);
-  let formData = getFormFields(document.getElementsByTagName('form')[0]);
+  let formData = getFormFields(document.getElementsByClassName('add-item')[0]);
+  console.log("edit list form data", formData);
   let data = {
     list: {
-      id: formData.content.list_id,
+      id: list_id,
       title: formData.list.title,
     }
   };
