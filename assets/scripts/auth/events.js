@@ -39,10 +39,6 @@ const onChangePassword = (event) => {
     .fail(ui.passwordChangeFailure);
 };
 
-const onToggleChangePassword = () => {
-  ui.toggleChangePassword();
-};
-
 const onShowAuth = () => {
   event.preventDefault();
   let authForm = '';
@@ -59,6 +55,11 @@ const onGoHome = () => {
   ui.goHome();
 };
 
+const onToggleChangePassword = () => {
+  event.preventDefault();
+  ui.toggleChangePassword();
+};
+
 const addHandlers = () => {
   $('.view').on('submit', '#sign-up', onSignUp);
   $('.view').on('submit', '#log-in', onLogIn);
@@ -66,7 +67,7 @@ const addHandlers = () => {
   $('#change-password').on('submit', onChangePassword);
   $('.view').on('click', '.log-in', onShowAuth);
   $('.view').on('click', '.sign-up', onShowAuth);
-  $('.change-password-link').on('click', onToggleChangePassword);
+  $('.view').on('click', '.change-password-link', onToggleChangePassword);
   $('.view').on('click', '.home-link', onGoHome);
 };
 

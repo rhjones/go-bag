@@ -88,6 +88,10 @@ const logOut = () => {
   goHome();
 };
 
+const toggleChangePassword = () => {
+  $('.pwd-form').slideToggle();
+};
+
 module.exports = {
   logInFailure,
   logOutFailure,
@@ -101,4 +105,5 @@ module.exports = {
   showAuth,
   goHome,
   logOut,
+  toggleChangePassword,
 };

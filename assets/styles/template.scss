@@ -12,16 +12,29 @@ a:visited {
 }
 
 .btn-standard {
+  background: none;
   border: 1px solid $white;
   border-radius: 10px;
   display: inline-block;
   padding: 1em;
-  background: none;
 }
 
 .btn-standard:hover {
   background: $white;
   color: $black;
+}
+
+input {
+  background-color: $white;
+  border: 1px solid $black;
+  border-radius: 0;
+  box-shadow: none;
+  color: $black;
+  font-size: 1em;
+  height: 2em;
+  margin: .5em 0;
+  padding: .25em;
+  width: 100%;
 }
 
 // come back to this
