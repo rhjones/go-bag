@@ -5,9 +5,9 @@ const api = require('./api');
 const ui = require('./ui');
 
 const onGetAllLists = () => {
-  if ($(event.target).is('a'))  {
+  // if ($(event.target).is('a'))  {
     event.preventDefault();
-  }
+  // 
   api.getAllLists()
     .done(ui.renderAllLists)
     .fail(ui.getFailure);

@@ -105,14 +105,16 @@
   }
 }
 
-.close-list {
-  float: right;
+.list-title {
+  display: inline-block;
+  max-width: 73%;
 }
 
 .list-header {
   small {
+    float: right;
     font-size: $font-size;
-    
+
     a {
       padding-left: .5em;
     }
