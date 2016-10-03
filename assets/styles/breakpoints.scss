@@ -1,5 +1,11 @@
 @import 'breakpoint';
 
+@include breakpoint(tiny) {
+  .app-name {
+    display: none;
+  }
+}
+
 @include breakpoint(sm) {
   header {
     h1 {
