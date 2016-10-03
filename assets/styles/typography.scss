@@ -1,6 +1,8 @@
+$font-size: 16px;
+
 body {
   font-family: 'Raleway', sans-serif;
-  font-size: 16px;
+  font-size: $font-size;
 }
 
 h1 {

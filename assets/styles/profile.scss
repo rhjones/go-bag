@@ -105,6 +105,20 @@
   }
 }
 
+.close-list {
+  float: right;
+}
+
+.list-header {
+  small {
+    font-size: $font-size;
+    
+    a {
+      padding-left: .5em;
+    }
+  }
+}
+
 
 
 
