@@ -86,8 +86,12 @@ const onDeleteList = (event) => {
   let list_id = '';
   if ($(event.target).attr('data-id')) {
     list_id = $(event.target).attr('data-id');
+    console.log('event.target has an id of', list_id);
   } else if ($(event.target).parents('form').attr('data-id')) {
     list_id = $(event.target).parents('form').attr('data-id');
+    console.log('event.target has a form parent with an id of', list_id);
+  } else if ($(event.target).parent().attr('data-id')) {
+    list_id = $(event.target).parent().attr('data-id');
   }
   console.log(list_id);
   api.deleteList(list_id)
