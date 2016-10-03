@@ -2,13 +2,12 @@
 
 const app = require('../app');
 
-const warning = require('../templates/warning.handlebars');
-
 const messages = {
   signUpFail: 'Unable to create account.',
   logInFail: 'Unable to log in.',
   logOutFail: 'Unable to log out.',
   passwordChangeFail: 'Unable to change password.',
+  passwordChangeSuccess: 'Password changed.',
 };
 
 const home = require('../templates/home.handlebars');
@@ -16,7 +15,13 @@ const logInForm = require('../templates/logIn.handlebars');
 const signUpForm = require('../templates/signUp.handlebars');
 
 const renderWarning = (message) => {
+  const warning = require('../templates/warning.handlebars');
   $('.message').html(warning(message));
+};
+
+const renderSuccess = (message) => {
+  const success = require('../templates/success.handlebars');
+  $('.message').html(success(message));
 };
 
 const logInFailure = () => {
@@ -48,8 +53,13 @@ const logOutSuccess = () => {
   console.log('logged out');
 };
 
+const toggleChangePassword = () => {
+  $('.pwd-form').slideToggle();
+};
+
 const passwordChangeSuccess = () => {
-  console.log('changed password');
+  toggleChangePassword();
+  renderSuccess({message: messages.passwordChangeSuccess});
 };
 
 const showSignUp = () => {
@@ -86,10 +96,6 @@ const logOut = () => {
     token: null,
   };
   goHome();
-};
-
-const toggleChangePassword = () => {
-  $('.pwd-form').slideToggle();
 };
 
 module.exports = {

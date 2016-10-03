@@ -64,7 +64,7 @@ const addHandlers = () => {
   $('.view').on('submit', '#sign-up', onSignUp);
   $('.view').on('submit', '#log-in', onLogIn);
   $('.view').on('click', '.log-out', onLogOut);
-  $('#change-password').on('submit', onChangePassword);
+  $('.view').on('submit', '#change-password', onChangePassword);
   $('.view').on('click', '.log-in', onShowAuth);
   $('.view').on('click', '.sign-up', onShowAuth);
   $('.view').on('click', '.change-password-link', onToggleChangePassword);
