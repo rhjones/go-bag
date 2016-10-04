@@ -2,6 +2,7 @@
 
 const getFormFields = require('../../../lib/get-form-fields');
 const api = require('./api');
+const app = require('../app');
 const ui = require('./ui');
 
 const onSignUp = (event) => {
@@ -59,7 +60,13 @@ const onShowAuth = () => {
 
 const onGoHome = () => {
   event.preventDefault();
-  ui.goHome();
+  if (app.user.id) { 
+    api.getUser()
+      .done(ui.renderProfile)
+      .fail(ui.getUserFailure);
+  } else {
+    ui.goHome();
+  }
 };
 
 const addHandlers = () => {

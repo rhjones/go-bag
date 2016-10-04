@@ -10,6 +10,7 @@ const messages = {
   logOutFail: 'Unable to log out.',
   passwordChangeFail: 'Unable to change password.',
   passwordChangeSuccess: 'Password changed.',
+  getUserFail: 'Unable to access your profile.',
 };
 
 const renderWarning = (message) => {
@@ -22,6 +23,11 @@ const renderSuccess = (message) => {
   const success = require('../templates/success.handlebars');
   $('.message').html(success(message));
   $('.message').children().delay(3000).fadeToggle('slow');
+};
+
+const signUpFailure = () => {
+  renderWarning({message: messages.signUpFail});
+  $('#sign-up .auth-button').html('Sign Up');
 };
 
 const logInFailure = () => {
@@ -37,9 +43,8 @@ const passwordChangeFailure = () => {
   renderWarning({message: messages.passwordChangeFail});
 };
 
-const signUpFailure = () => {
-  renderWarning({message: messages.signUpFail});
-  $('#sign-up .auth-button').html('Sign Up');
+const getUserFailure = () => {
+  renderWarning({message: messages.getUserFail});
 };
 
 // SIGN UP AND LOG IN
@@ -80,7 +85,11 @@ const greetings = [
 ];
 
 const renderProfile = (data) => {
-  app.user = data.user;
+  if (app.user.id) {
+    app.user.lists = data.user.lists;
+  } else {
+    app.user = data.user;
+  }
   app.user.greeting = greetings[Math.floor(Math.random() * greetings.length)];
   let user = app.user;
   const userProfile = require('../templates/userProfile.handlebars');
@@ -100,9 +109,7 @@ const passwordChangeSuccess = () => {
 // "HOME" PAGE
 
 const goHome = () => {
-  if (app.user.id) {
-    renderProfile(app);
-  } else {
+  if (!app.user.id) { 
     const home = require('../templates/home.handlebars');
     $('.view').html(home);
   }
@@ -120,10 +127,11 @@ const logOutSuccess = () => {
 };
 
 module.exports = {
+  signUpFailure,
   logInFailure,
   logOutFailure,
   passwordChangeFailure,
-  signUpFailure,
+  getUserFailure,
   showSignUp,
   showLogIn,
   showAuth,
