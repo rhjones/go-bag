@@ -27,8 +27,13 @@ const onLogIn = (event) => {
 const onLogOut = (event) => {
   event.preventDefault();
   api.logOut()
-    .done(ui.logOut)
+    .done(ui.logOutSuccess)
     .fail(ui.logOutFailure);
+};
+
+const onToggleChangePassword = () => {
+  event.preventDefault();
+  ui.toggleChangePassword();
 };
 
 const onChangePassword = (event) => {
@@ -55,19 +60,14 @@ const onGoHome = () => {
   ui.goHome();
 };
 
-const onToggleChangePassword = () => {
-  event.preventDefault();
-  ui.toggleChangePassword();
-};
-
 const addHandlers = () => {
   $('.view').on('submit', '#sign-up', onSignUp);
   $('.view').on('submit', '#log-in', onLogIn);
   $('.view').on('click', '.log-out', onLogOut);
+  $('.view').on('click', '.change-password-link', onToggleChangePassword);
   $('.view').on('submit', '#change-password', onChangePassword);
   $('.view').on('click', '.log-in', onShowAuth);
   $('.view').on('click', '.sign-up', onShowAuth);
-  $('.view').on('click', '.change-password-link', onToggleChangePassword);
   $('.view').on('click', '.home-link', onGoHome);
 };
 

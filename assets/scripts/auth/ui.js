@@ -2,6 +2,8 @@
 
 const app = require('../app');
 
+// MESSAGES
+
 const messages = {
   signUpFail: 'Unable to create account.',
   logInFail: 'Unable to log in.',
@@ -9,19 +11,6 @@ const messages = {
   passwordChangeFail: 'Unable to change password.',
   passwordChangeSuccess: 'Password changed.',
 };
-
-const greetings = [
-  '"Adventure is worthwhile."" – Aesop',
-  '"The gladdest moment in human life, me thinks, is a departure into unknown lands." – Sir Richard Burton',
-  '"People don’t take trips, trips take people." – John Steinbeck',
-  '"Life is either a daring adventure or nothing." – Helen Keller',
-  '"Not all those who wander are lost." – J.R.R. Tolkien',
-  '"I haven’t been everywhere, but it’s on my list." – Susan Sontag',
-];
-
-const home = require('../templates/home.handlebars');
-const logInForm = require('../templates/logIn.handlebars');
-const signUpForm = require('../templates/signUp.handlebars');
 
 const renderWarning = (message) => {
   const warning = require('../templates/warning.handlebars');
@@ -51,36 +40,15 @@ const signUpFailure = () => {
   renderWarning({message: messages.signUpFail});
 };
 
-const renderProfile = (data) => {
-  app.user = data.user;
-  app.user.greeting = greetings[Math.floor(Math.random() * greetings.length)];
-  let user = app.user;
-  console.log('app.user is', user);
-  const userProfile = require('../templates/userProfile.handlebars');
-  $('.view').html(userProfile(user));
-};
-
-const logOutSuccess = () => {
-  app.user = null;
-  console.log('logged out');
-};
-
-const toggleChangePassword = () => {
-  $('.pwd-form').find('input').val('');
-  $('.pwd-form').slideToggle();
-};
-
-const passwordChangeSuccess = () => {
-  toggleChangePassword();
-  renderSuccess({message: messages.passwordChangeSuccess});
-};
+// SIGN UP AND LOG IN
 
 const showSignUp = () => {
+  const signUpForm = require('../templates/signUp.handlebars');
   $('.auth-forms').html(signUpForm);
 };
 
 const showLogIn = () => {
-  console.log('clicked on log in link');
+  const logInForm = require('../templates/logIn.handlebars');
   $('.auth-forms').html(logInForm);
 };
 
@@ -94,15 +62,49 @@ const showAuth = (authForm) => {
   }
 };
 
+// USER PROFILE 
+
+const greetings = [
+  '"Adventure is worthwhile."" – Aesop',
+  '"The gladdest moment in human life, me thinks, is a departure into unknown lands." – Sir Richard Burton',
+  '"People don’t take trips, trips take people." – John Steinbeck',
+  '"Life is either a daring adventure or nothing." – Helen Keller',
+  '"Not all those who wander are lost." – J.R.R. Tolkien',
+  '"I haven’t been everywhere, but it’s on my list." – Susan Sontag',
+];
+
+const renderProfile = (data) => {
+  app.user = data.user;
+  app.user.greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  let user = app.user;
+  const userProfile = require('../templates/userProfile.handlebars');
+  $('.view').html(userProfile(user));
+};
+
+const toggleChangePassword = () => {
+  $('.pwd-form').find('input').val('');
+  $('.pwd-form').slideToggle();
+};
+
+const passwordChangeSuccess = () => {
+  toggleChangePassword();
+  renderSuccess({message: messages.passwordChangeSuccess});
+};
+
+// "HOME" PAGE
+
 const goHome = () => {
   if (app.user.id) {
     renderProfile(app);
   } else {
+    const home = require('../templates/home.handlebars');
     $('.view').html(home);
   }
 };
 
-const logOut = () => {
+// LOG OUT
+
+const logOutSuccess = () => {
   app.user = {
     id: null,
     email: null,
@@ -116,13 +118,12 @@ module.exports = {
   logOutFailure,
   passwordChangeFailure,
   signUpFailure,
-  renderProfile,
-  logOutSuccess,
-  passwordChangeSuccess,
   showSignUp,
   showLogIn,
   showAuth,
-  goHome,
-  logOut,
+  renderProfile,
   toggleChangePassword,
+  passwordChangeSuccess,
+  goHome,
+  logOutSuccess,
 };
