@@ -1731,7 +1731,7 @@ webpackJsonp([0],[
 	    + "\n  <div class=\"greeting\">\n    <div class=\"overlay\">\n      "
 	    + container.escapeExpression(container.lambda((depth0 != null ? depth0.greeting : depth0), depth0))
 	    + "\n    </div>\n  </div>\n\n  <div class=\"message\">\n  </div>\n\n  <div class=\"profile-contents\">\n"
-	    + ((stack1 = container.invokePartial(__webpack_require__(37),depth0,{"name":"allLists","data":data,"indent":"    ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
+	    + ((stack1 = container.invokePartial(__webpack_require__(37),depth0,{"name":"allLists","data":data,"indent":"      ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
 	    + "  </div>\n\n</div>";
 	},"usePartial":true,"useData":true});
 
@@ -1742,9 +1742,13 @@ webpackJsonp([0],[
 	var Handlebars = __webpack_require__(11);
 	function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 	module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
+	    var stack1;
+
+	  return ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.lists : depth0),{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+	},"2":function(container,depth0,helpers,partials,data) {
 	    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-	  return "  <li data-id="
+	  return "    <li data-id="
 	    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
 	    + "><a href=\"\" class=\"view-list\" data-id="
 	    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
@@ -1753,11 +1757,13 @@ webpackJsonp([0],[
 	    + "</a><a href=\"\" class=\"delete-list\" data-id="
 	    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
 	    + " title=\"Delete\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a><a href=\"\" class=\"clone-list\" title=\"Clone\"><i class=\"fa fa-clone\" aria-hidden=\"true\"></i></a></li>\n";
+	},"4":function(container,depth0,helpers,partials,data) {
+	    return "    <h2>Hello, there.</h2>\n\n    <p>Ready to create your first packing list? Click the blue plus sign above to get started.</p>\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1;
 
-	  return "<h1>Lists \n  <a class=\"new-list\" title=\"Create a list\" role=\"button\" href=\"\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\n</h1>\n  \n<ul class=\"all-lists\">\n"
-	    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.lists : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+	  return "<h1>Lists \n  <a class=\"new-list\" title=\"Create a list\" role=\"button\" href=\"\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></a>\n</h1>\n  \n<ul class=\"all-lists\">\n\n"
+	    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.lists : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(4, data, 0),"data":data})) != null ? stack1 : "")
 	    + "</ul>\n";
 	},"useData":true});
 
@@ -2210,21 +2216,27 @@ webpackJsonp([0],[
 	var Handlebars = __webpack_require__(11);
 	function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 	module.exports = (Handlebars["default"] || Handlebars).template({"1":function(container,depth0,helpers,partials,data) {
+	    var stack1;
+
+	  return ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.contents : depth0),{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+	},"2":function(container,depth0,helpers,partials,data) {
 	    var stack1, alias1=container.lambda, alias2=container.escapeExpression, alias3=depth0 != null ? depth0 : {};
 
-	  return "  <li data-id=\""
+	  return "    <li data-id=\""
 	    + alias2(alias1((depth0 != null ? depth0.id : depth0), depth0))
 	    + "\" "
-	    + ((stack1 = helpers["if"].call(alias3,(depth0 != null ? depth0.packed : depth0),{"name":"if","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-	    + ">\n    <input type=\"checkbox\" "
-	    + ((stack1 = helpers["if"].call(alias3,(depth0 != null ? depth0.packed : depth0),{"name":"if","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-	    + " class=\"pack-content\">\n    "
+	    + ((stack1 = helpers["if"].call(alias3,(depth0 != null ? depth0.packed : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+	    + ">\n      <input type=\"checkbox\" "
+	    + ((stack1 = helpers["if"].call(alias3,(depth0 != null ? depth0.packed : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+	    + " class=\"pack-content\">\n      "
 	    + alias2(alias1(((stack1 = (depth0 != null ? depth0.item : depth0)) != null ? stack1.name : stack1), depth0))
-	    + " \n    <a href=\"\" class=\"delete-content\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a>\n  </li>\n";
-	},"2":function(container,depth0,helpers,partials,data) {
+	    + " \n      <a href=\"\" class=\"delete-content\"><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></a>\n    </li>\n";
+	},"3":function(container,depth0,helpers,partials,data) {
 	    return "class=\"packed\"";
-	},"4":function(container,depth0,helpers,partials,data) {
+	},"5":function(container,depth0,helpers,partials,data) {
 	    return "checked";
+	},"7":function(container,depth0,helpers,partials,data) {
+	    return "    <p>Looks like your packing list is empty. Start typing in the box above to add items.</p>\n";
 	},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
 	    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
 
@@ -2237,7 +2249,7 @@ webpackJsonp([0],[
 	    + "\">\n  <input class=\"item-search\" name=\"item[name]\" id=\"item[name]\" type=\"text\" placeholder=\"What are you packing?\" required>\n  <button type=\"submit\"><i class=\"fa fa-plus-circle\" aria-hidden=\"true\"></i></button>\n</form>\n<ul class=\"list-items\" data-id=\""
 	    + alias2(alias1((depth0 != null ? depth0.id : depth0), depth0))
 	    + "\">\n"
-	    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.contents : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+	    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.contents : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(7, data, 0),"data":data})) != null ? stack1 : "")
 	    + "</ul>\n";
 	},"usePartial":true,"useData":true});
 
