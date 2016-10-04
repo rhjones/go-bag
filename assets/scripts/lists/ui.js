@@ -1,5 +1,7 @@
 'use strict';
 
+const app = require('../app');
+
 // MESSAGES
 
 const messages = {
@@ -49,6 +51,7 @@ const updateItemFailure = () => {
 // RENDER LISTS
 
 const renderAllLists = (lists) => {
+  app.user.lists = lists;
   const allLists = require('../templates/allLists.handlebars');
   $('.profile-contents').html(allLists(lists));
 };
