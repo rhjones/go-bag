@@ -112,6 +112,7 @@ webpackJsonp([0],[
 
 	var onSignUp = function onSignUp(event) {
 	  event.preventDefault();
+	  ui.authLoading();
 	  var signUpData = getFormFields(event.target);
 	  api.signUp(signUpData).done(function (data, textStatus, jqXHR) {
 	    api.logIn(data, textStatus, jqXHR, signUpData).done(ui.renderProfile).fail(ui.logInFailure);
@@ -120,6 +121,7 @@ webpackJsonp([0],[
 
 	var onLogIn = function onLogIn(event) {
 	  event.preventDefault();
+	  ui.authLoading();
 	  var data = getFormFields(event.target);
 	  api.logIn(data).done(ui.renderProfile).fail(ui.logInFailure);
 	};
@@ -339,6 +341,7 @@ webpackJsonp([0],[
 
 	var logInFailure = function logInFailure() {
 	  renderWarning({ message: messages.logInFail });
+	  $('#log-in .auth-button').html('Log In');
 	};
 
 	var logOutFailure = function logOutFailure() {
@@ -351,6 +354,7 @@ webpackJsonp([0],[
 
 	var signUpFailure = function signUpFailure() {
 	  renderWarning({ message: messages.signUpFail });
+	  $('#sign-up .auth-button').html('Sign Up');
 	};
 
 	// SIGN UP AND LOG IN
@@ -373,6 +377,10 @@ webpackJsonp([0],[
 	  } else if (authForm === 'log-in') {
 	    showLogIn();
 	  }
+	};
+
+	var authLoading = function authLoading() {
+	  $('.auth-button').html('<i class="fa fa-spinner fa-spin fa-fw"></i><span class="sr-only">Loading...</span>');
 	};
 
 	// USER PROFILE 
@@ -427,6 +435,7 @@ webpackJsonp([0],[
 	  showSignUp: showSignUp,
 	  showLogIn: showLogIn,
 	  showAuth: showAuth,
+	  authLoading: authLoading,
 	  renderProfile: renderProfile,
 	  toggleChangePassword: toggleChangePassword,
 	  passwordChangeSuccess: passwordChangeSuccess,
@@ -1645,7 +1654,7 @@ webpackJsonp([0],[
 	var Handlebars = __webpack_require__(11);
 	function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-	    return "<div class=\"wrapper\">\n  <h1>Sign Up</h1>\n  <form id=\"sign-up\">\n    <div>\n      <label for=\"credentials[email]\">Email</label>\n      <input name=\"credentials[email]\" id=\"credentials[email]\" type=\"email\" placeholder=\"Email\" required>\n    </div>\n    <div>\n      <label for=\"credentials[password]\">Password</label>\n      <input name=\"credentials[password]\" id=\"credentials[password]\" type=\"password\" placeholder=\"Password\" required>\n    </div>\n    <div>\n      <label for=\"credentials[password_confirmation]\">Confirm password</label>\n      <input name=\"credentials[password_confirmation]\" id=\"credentials[password_confirmation]\" type=\"password\" placeholder=\"Confirm password\" required>\n    </div>\n    <p><button type=\"submit\" class=\"btn-standard\">Sign Up</button></p>\n  </form>\n\n  <p>Have an account? <a class=\"log-in\" role=\"button\" href=\"\">Log in.</a></p>\n</div>";
+	    return "<div class=\"wrapper\">\n  <h1>Sign Up</h1>\n  <form id=\"sign-up\">\n    <div>\n      <label for=\"credentials[email]\">Email</label>\n      <input name=\"credentials[email]\" id=\"credentials[email]\" type=\"email\" placeholder=\"Email\" required>\n    </div>\n    <div>\n      <label for=\"credentials[password]\">Password</label>\n      <input name=\"credentials[password]\" id=\"credentials[password]\" type=\"password\" placeholder=\"Password\" required>\n    </div>\n    <div>\n      <label for=\"credentials[password_confirmation]\">Confirm password</label>\n      <input name=\"credentials[password_confirmation]\" id=\"credentials[password_confirmation]\" type=\"password\" placeholder=\"Confirm password\" required>\n    </div>\n    <p><button type=\"submit\" class=\"btn-standard auth-button\">Sign Up</button></p>\n  </form>\n\n  <p>Have an account? <a class=\"log-in\" role=\"button\" href=\"\">Log in.</a></p>\n</div>";
 	},"useData":true});
 
 /***/ },
@@ -1655,7 +1664,7 @@ webpackJsonp([0],[
 	var Handlebars = __webpack_require__(11);
 	function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-	    return "<div class=\"wrapper\">\n  <h1>Log In</h1>\n  <form id=\"log-in\">\n    <div>\n      <label for=\"credentials[email]\">Email</label>\n      <input name=\"credentials[email]\" id=\"credentials[email]\" type=\"email\" placeholder=\"Email\" required>\n    </div>\n    <div>\n      <label for=\"credentials[password]\">Password</label>\n      <input name=\"credentials[password]\" id=\"credentials[password]\" type=\"password\" placeholder=\"Password\" required>\n    </div>\n    <p><button type=\"submit\" class=\"btn-standard\">Log In</button></p>\n  </form>\n\n  <p>No account? <a class=\"sign-up\" role=\"button\" href=\"\">Sign up.</a></p>\n</div>\n";
+	    return "<div class=\"wrapper\">\n  <h1>Log In</h1>\n  <form id=\"log-in\">\n    <div>\n      <label for=\"credentials[email]\">Email</label>\n      <input name=\"credentials[email]\" id=\"credentials[email]\" type=\"email\" placeholder=\"Email\" required>\n    </div>\n    <div>\n      <label for=\"credentials[password]\">Password</label>\n      <input name=\"credentials[password]\" id=\"credentials[password]\" type=\"password\" placeholder=\"Password\" required>\n    </div>\n    <p><button type=\"submit\" class=\"btn-standard auth-button\">Log In</button></p>\n  </form>\n\n  <p>No account? <a class=\"sign-up\" role=\"button\" href=\"\">Sign up.</a></p>\n</div>\n";
 	},"useData":true});
 
 /***/ },
