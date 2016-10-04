@@ -108,6 +108,7 @@ webpackJsonp([0],[
 
 	var getFormFields = __webpack_require__(6);
 	var api = __webpack_require__(7);
+	var app = __webpack_require__(8);
 	var ui = __webpack_require__(9);
 
 	var onSignUp = function onSignUp(event) {
@@ -155,7 +156,11 @@ webpackJsonp([0],[
 
 	var onGoHome = function onGoHome() {
 	  event.preventDefault();
-	  ui.goHome();
+	  if (app.user.id) {
+	    api.getUser().done(ui.renderProfile).fail(ui.getUserFailure);
+	  } else {
+	    ui.goHome();
+	  }
 	};
 
 	var addHandlers = function addHandlers() {
@@ -284,11 +289,22 @@ webpackJsonp([0],[
 	  });
 	};
 
+	var getUser = function getUser() {
+	  return $.ajax({
+	    url: app.host + '/users/' + app.user.id,
+	    method: 'GET',
+	    headers: {
+	      Authorization: 'Token token=' + app.user.token
+	    }
+	  });
+	};
+
 	module.exports = {
 	  signUp: signUp,
 	  logIn: logIn,
 	  logOut: logOut,
-	  changePassword: changePassword
+	  changePassword: changePassword,
+	  getUser: getUser
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -324,7 +340,8 @@ webpackJsonp([0],[
 	  logInFail: 'Unable to log in.',
 	  logOutFail: 'Unable to log out.',
 	  passwordChangeFail: 'Unable to change password.',
-	  passwordChangeSuccess: 'Password changed.'
+	  passwordChangeSuccess: 'Password changed.',
+	  getUserFail: 'Unable to access your profile.'
 	};
 
 	var renderWarning = function renderWarning(message) {
@@ -337,6 +354,11 @@ webpackJsonp([0],[
 	  var success = __webpack_require__(30);
 	  $('.message').html(success(message));
 	  $('.message').children().delay(3000).fadeToggle('slow');
+	};
+
+	var signUpFailure = function signUpFailure() {
+	  renderWarning({ message: messages.signUpFail });
+	  $('#sign-up .auth-button').html('Sign Up');
 	};
 
 	var logInFailure = function logInFailure() {
@@ -352,9 +374,8 @@ webpackJsonp([0],[
 	  renderWarning({ message: messages.passwordChangeFail });
 	};
 
-	var signUpFailure = function signUpFailure() {
-	  renderWarning({ message: messages.signUpFail });
-	  $('#sign-up .auth-button').html('Sign Up');
+	var getUserFailure = function getUserFailure() {
+	  renderWarning({ message: messages.getUserFail });
 	};
 
 	// SIGN UP AND LOG IN
@@ -388,7 +409,11 @@ webpackJsonp([0],[
 	var greetings = ['"Adventure is worthwhile."" – Aesop', '"The gladdest moment in human life, me thinks, is a departure into unknown lands." – Sir Richard Burton', '"People don’t take trips, trips take people." – John Steinbeck', '"Life is either a daring adventure or nothing." – Helen Keller', '"Not all those who wander are lost." – J.R.R. Tolkien', '"I haven’t been everywhere, but it’s on my list." – Susan Sontag'];
 
 	var renderProfile = function renderProfile(data) {
-	  app.user = data.user;
+	  if (app.user.id) {
+	    app.user.lists = data.user.lists;
+	  } else {
+	    app.user = data.user;
+	  }
 	  app.user.greeting = greetings[Math.floor(Math.random() * greetings.length)];
 	  var user = app.user;
 	  var userProfile = __webpack_require__(36);
@@ -408,9 +433,7 @@ webpackJsonp([0],[
 	// "HOME" PAGE
 
 	var goHome = function goHome() {
-	  if (app.user.id) {
-	    renderProfile(app);
-	  } else {
+	  if (!app.user.id) {
 	    var home = __webpack_require__(38);
 	    $('.view').html(home);
 	  }
@@ -428,10 +451,11 @@ webpackJsonp([0],[
 	};
 
 	module.exports = {
+	  signUpFailure: signUpFailure,
 	  logInFailure: logInFailure,
 	  logOutFailure: logOutFailure,
 	  passwordChangeFailure: passwordChangeFailure,
-	  signUpFailure: signUpFailure,
+	  getUserFailure: getUserFailure,
 	  showSignUp: showSignUp,
 	  showLogIn: showLogIn,
 	  showAuth: showAuth,
@@ -1774,7 +1798,7 @@ webpackJsonp([0],[
 	var Handlebars = __webpack_require__(11);
 	function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
 	module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-	    return "<div class=\"home\">\n  <div class=\"welcome\">\n    <div class=\"welcome-overlay\">\n      <header>\n        <h1><i class=\"fa fa-suitcase\" aria-hidden=\"true\"></i> go bag</h1>\n        <p>packing lists for frequent travelers</p>\n      </header>\n      <p>\n        <a href=\"\" role=\"button\" class=\"btn-standard sign-up\">sign up</a>\n        <a href=\"\" role=\"button\" class=\"btn-standard learn-more\">learn more</a>\n      </p>\n      <p>Have an account? <a href=\"\" class=\"log-in\">Log in.</a></p>\n    </div>\n  </div>\n\n  <div id=\"about\" class=\"welcome-cont\">\n    <div class=\"branding\">\n      <h1><i class=\"fa fa-suitcase\" aria-hidden=\"true\"></i></h1>\n      <p>No more sticky notes.</p>\n      <p>No more scraps of paper.</p>\n      <p>No more showing up at the conference without your laptop charger (or to your honeymoon without your favorite swimsuit).</p>\n    </div>\n\n    <div class=\"auth-buttons\">\n      <div class=\"auth-buttons-overlay\">\n        <a href=\"\" role=\"button\" class=\"btn-standard sign-up\">sign up</a>\n        <a href=\"\" role=\"button\" class=\"btn-standard log-in\">log in</a>\n      </div>\n    </div>\n  </div>\n</div>";
+	    return "<div class=\"home\">\n  <div class=\"welcome\">\n    <div class=\"welcome-overlay\">\n      <header>\n        <h1><i class=\"fa fa-suitcase\" aria-hidden=\"true\"></i> go bag</h1>\n        <p>packing lists for frequent travelers</p>\n      </header>\n      <p>\n        <a href=\"\" role=\"button\" class=\"btn-standard sign-up\">sign up</a>\n        <a href=\"\" role=\"button\" class=\"btn-standard learn-more\">learn more</a>\n      </p>\n      <p>Have an account? <a href=\"\" class=\"log-in\">Log in.</a></p>\n    </div>\n  </div>\n\n  <div id=\"about\" class=\"welcome-cont\">\n    <div class=\"branding\">\n      <h1><i class=\"fa fa-suitcase\" aria-hidden=\"true\"></i></h1>\n      <p>No more sticky notes.</p>\n      <p>No more scraps of paper.</p>\n      <p>No more showing up at the conference without your laptop charger (or to Hawaii without your favorite swimsuit).</p>\n    </div>\n\n    <div class=\"auth-buttons\">\n      <div class=\"auth-buttons-overlay\">\n        <a href=\"\" role=\"button\" class=\"btn-standard sign-up\">sign up</a>\n        <a href=\"\" role=\"button\" class=\"btn-standard log-in\">log in</a>\n      </div>\n    </div>\n  </div>\n</div>";
 	},"useData":true});
 
 /***/ },
@@ -2116,6 +2140,8 @@ webpackJsonp([0],[
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
+	var app = __webpack_require__(8);
+
 	// MESSAGES
 
 	var messages = {
@@ -2165,6 +2191,7 @@ webpackJsonp([0],[
 	// RENDER LISTS
 
 	var renderAllLists = function renderAllLists(lists) {
+	  app.user.lists = lists;
 	  var allLists = __webpack_require__(37);
 	  $('.profile-contents').html(allLists(lists));
 	};
