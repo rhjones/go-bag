@@ -26,6 +26,7 @@ const renderSuccess = (message) => {
 
 const logInFailure = () => {
   renderWarning({message: messages.logInFail});
+  $('#log-in .auth-button').html('Log In');
 };
 
 const logOutFailure = () => {
@@ -38,6 +39,7 @@ const passwordChangeFailure = () => {
 
 const signUpFailure = () => {
   renderWarning({message: messages.signUpFail});
+  $('#sign-up .auth-button').html('Sign Up');
 };
 
 // SIGN UP AND LOG IN
@@ -60,6 +62,10 @@ const showAuth = (authForm) => {
   } else if (authForm === 'log-in') {
     showLogIn();
   }
+};
+
+const authLoading = () => {
+  $('.auth-button').html('<i class="fa fa-spinner fa-spin fa-fw"></i><span class="sr-only">Loading...</span>');
 };
 
 // USER PROFILE 
@@ -121,6 +127,7 @@ module.exports = {
   showSignUp,
   showLogIn,
   showAuth,
+  authLoading,
   renderProfile,
   toggleChangePassword,
   passwordChangeSuccess,

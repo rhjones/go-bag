@@ -6,6 +6,7 @@ const ui = require('./ui');
 
 const onSignUp = (event) => {
   event.preventDefault();
+  ui.authLoading();
   let signUpData = getFormFields(event.target);
   api.signUp(signUpData)
     .done(function (data, textStatus, jqXHR) {
@@ -18,6 +19,7 @@ const onSignUp = (event) => {
 
 const onLogIn = (event) => {
   event.preventDefault();
+  ui.authLoading();
   let data = getFormFields(event.target);
   api.logIn(data)
     .done(ui.renderProfile)
