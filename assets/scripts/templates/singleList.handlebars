@@ -7,11 +7,15 @@
   <button type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 </form>
 <ul class="list-items" data-id="{{id}}">
-  {{#each contents}}
-  <li data-id="{{id}}" {{#if packed}}class="packed"{{/if}}>
-    <input type="checkbox" {{#if packed}}checked{{/if}} class="pack-content">
-    {{item.name}} 
-    <a href="" class="delete-content"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-  </li>
-  {{/each}}
+  {{#if contents}}
+    {{#each contents}}
+    <li data-id="{{id}}" {{#if packed}}class="packed"{{/if}}>
+      <input type="checkbox" {{#if packed}}checked{{/if}} class="pack-content">
+      {{item.name}} 
+      <a href="" class="delete-content"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+    </li>
+    {{/each}}
+  {{else}}
+    <p>Looks like your packing list is empty. Start typing in the box above to add items.</p>
+  {{/if}}
 </ul>

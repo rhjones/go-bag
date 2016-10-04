@@ -3,7 +3,14 @@
 </h1>
   
 <ul class="all-lists">
-  {{#each lists}}
-  <li data-id={{id}}><a href="" class="view-list" data-id={{id}}>{{title}}</a><a href="" class="delete-list" data-id={{id}} title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a><a href="" class="clone-list" title="Clone"><i class="fa fa-clone" aria-hidden="true"></i></a></li>
-  {{/each}}
+
+  {{#if lists}}
+    {{#each lists}}
+    <li data-id={{id}}><a href="" class="view-list" data-id={{id}}>{{title}}</a><a href="" class="delete-list" data-id={{id}} title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a><a href="" class="clone-list" title="Clone"><i class="fa fa-clone" aria-hidden="true"></i></a></li>
+    {{/each}}
+  {{else}}
+    <h2>Hello, there.</h2>
+
+    <p>Ready to create your first packing list? Click the blue plus sign above to get started.</p>
+  {{/if}}
 </ul>
