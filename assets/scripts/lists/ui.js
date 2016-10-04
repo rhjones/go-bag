@@ -1,26 +1,21 @@
 'use strict';
 
-// const app = require('../app');
-
-const warning = require('../templates/warning.handlebars');
+// MESSAGES
 
 const messages = {
-  fail: 'Fail.',
   getFail: 'Unable to retrieve data.',
   createListFail: 'Unable to create list.',
-  addItemFail: 'Unable to add item.',
+  updateListFail: 'Unable to update list.',
   deleteListFail: 'Unable to delete list.',
+  addItemFail: 'Unable to add item.',
   deleteItemFail: 'Unable to delete item.',
-  updateItemFail: 'Unable to update item.',
+  updateItemFail: 'Unable to update item.', 
 };
 
 const renderWarning = (message) => {
+  const warning = require('../templates/warning.handlebars');
   $('.message').html(warning(message));
   $('.message').children().delay(3000).fadeToggle('slow');
-};
-
-const failure = () => {
-  renderWarning({message: messages.fail});
 };
 
 const getFailure = () => {
@@ -31,12 +26,16 @@ const createListFailure = () => {
   renderWarning({message: messages.createListFail});
 };
 
-const addItemFailure = () => {
-  renderWarning({message: messages.addItemFail});
+const updateListFailure = () => {
+  renderWarning({message: messages.updateListFail});
 };
 
 const deleteListFailure = () => {
   renderWarning({message: messages.deleteListFail});
+};
+
+const addItemFailure = () => {
+  renderWarning({message: messages.addItemFail});
 };
 
 const deleteItemFailure = () => {
@@ -47,12 +46,11 @@ const updateItemFailure = () => {
   renderWarning({message: messages.updateItemFail});
 };
 
-const success = (data) => {
-  console.log(data);
-};
+// RENDER LISTS
 
-const searchForItems = (items) => {
-  console.log(items);
+const renderAllLists = (lists) => {
+  const allLists = require('../templates/allLists.handlebars');
+  $('.profile-contents').html(allLists(lists));
 };
 
 const renderList = (data) => {
@@ -61,11 +59,7 @@ const renderList = (data) => {
   $('.profile-contents').html(singleList(list));
 };
 
-const renderAllLists = (lists) => {
-  console.log(lists);
-  const allLists = require('../templates/allLists.handlebars');
-  $('.profile-contents').html(allLists(lists));
-};
+// UPDATE LIST
 
 const editListTitle = (title) => {
   let listHeaderEdit = require('../templates/listHeaderEdit.handlebars');
@@ -75,12 +69,9 @@ const editListTitle = (title) => {
 const toggleNewListForm = () => {
   let newListForm = require('../templates/newListForm.handlebars');
   if ($('.new-list-form').length > 0) {
-    console.log($('.new-list-form'));
-    console.log("new list form exists");
     $('.new-list').toggle();
     $('.new-list-form').slideToggle();
   } else {
-    console.log("new list form doesn't exist");
     $('ul.all-lists').before(newListForm);
     $('.new-list').toggle();
     $('.new-list-form').slideToggle();
@@ -88,17 +79,15 @@ const toggleNewListForm = () => {
 };
 
 module.exports = {
-  failure,
   getFailure,
   createListFailure,
   addItemFailure,
   deleteListFailure,
   deleteItemFailure,
   updateItemFailure,
-  success,
-  searchForItems,
-  renderList,
+  updateListFailure,
   renderAllLists,
+  renderList,
   editListTitle,
   toggleNewListForm,
 };

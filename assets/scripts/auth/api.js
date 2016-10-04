@@ -3,21 +3,19 @@
 const app = require('../app');
 
 const signUp = (data) => {
-  let request = $.ajax({
+  return $.ajax({
     url: app.host + '/sign-up',
     method: 'POST',
     data: data,
   });
-  return request;
 };
 
 const logIn = (data, textStatus, jqXHR, signUpData) => {
-  let request = $.ajax({
+  return $.ajax({
     url: app.host + '/sign-in',
     method: 'POST',
     data: signUpData ? signUpData : data,
   });
-  return request;
 };
 
 const logOut = () => {
@@ -31,7 +29,7 @@ const logOut = () => {
 };
 
 const changePassword = (data) => {
-  let request = $.ajax({
+  return $.ajax({
     url: app.host + '/change-password/' + app.user.id,
     method: 'PATCH',
     headers: {
@@ -39,7 +37,6 @@ const changePassword = (data) => {
     },
     data: data,
   });
-  return request;
 };
 
 module.exports = {
