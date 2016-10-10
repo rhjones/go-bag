@@ -8,6 +8,8 @@ Packing lists for frequent travelers.
 
 Go Bag depends on a Rails API, which is at [`rebekahheacock/go-bag-api`](https://github.com/rebekahheacock/go-bag-api). The API handles user authentication and the saving and storage of packing list and item data.
 
+**A detailed writeup of my development process is at [rebekahheacock.org: Go Bag](http://rebekahheacock.org/2016/10/go-bag/).**
+
 ## Project Planning
 
 ### User Stories
