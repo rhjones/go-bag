@@ -1,12 +1,12 @@
-# [Go Bag](https://rebekahheacock.github.io/go-bag/)
+# [Go Bag](https://rhjones.github.io/go-bag/)
 
 Packing lists for frequent travelers.
 
 ## About Go Bag
 
-[Go Bag](https://rebekahheacock.github.io/go-bag/) lets frequent travelers say goodbye to hastily scribbled packing lists. Go Bag saves your packing lists—whether they're for once-in-a-lifetime adventures or monthly business trips—and lets you add and delete items, search through a database of common travel necessities, check off items as you pack for an upcoming trip, and clone, edit, and delete lists depending on your travel schedule.
+[Go Bag](https://rhjones.github.io/go-bag/) lets frequent travelers say goodbye to hastily scribbled packing lists. Go Bag saves your packing lists—whether they're for once-in-a-lifetime adventures or monthly business trips—and lets you add and delete items, search through a database of common travel necessities, check off items as you pack for an upcoming trip, and clone, edit, and delete lists depending on your travel schedule.
 
-Go Bag depends on a Rails API, which is at [`rebekahheacock/go-bag-api`](https://github.com/rebekahheacock/go-bag-api). The API handles user authentication and the saving and storage of packing list and item data.
+Go Bag depends on a Rails API, which is at [`rhjones/go-bag-api`](https://github.com/rhjones/go-bag-api). The API handles user authentication and the saving and storage of packing list and item data.
 
 **A detailed writeup of my development process is at [rebekahheacock.org: Go Bag](http://rebekahheacock.org/2016/10/go-bag/).**
 
@@ -29,11 +29,11 @@ Go Bag depends on a Rails API, which is at [`rebekahheacock/go-bag-api`](https:/
 
 ### Data Model
 
-For complete data documentation, please see the API repo: [`rebekahheacock/go-bag-api`](https://github.com/rebekahheacock/go-bag-api).
+For complete data documentation, please see the API repo: [`rhjones/go-bag-api`](https://github.com/rhjones/go-bag-api).
 
 ## Development Process
 
-I began with the [API](https://github.com/rebekahheacock/go-bag-api), scaffolding the major resources (lists and items; users and authentication were provided as part of the General Assembly [Rails API Template](https://github.com/ga-wdi-boston/rails-api-template)). After establishing relationships between my models and protecting all create/update/delete actions and some read actions, I started working on front end functionality, beginning with authentication.
+I began with the [API](https://github.com/rhjones/go-bag-api), scaffolding the major resources (lists and items; users and authentication were provided as part of the General Assembly [Rails API Template](https://github.com/ga-wdi-boston/rails-api-template)). After establishing relationships between my models and protecting all create/update/delete actions and some read actions, I started working on front end functionality, beginning with authentication.
 
 After authentication I created basic forms for list and item creation and began experimenting with Devbridge's [jQuery autocomplete](https://github.com/devbridge/jQuery-Autocomplete) library to use when adding items to list. I added search functionality to the Items resource in my API to enable autocompletion on the client side.
 
@@ -47,7 +47,7 @@ After that: cleanup, bug fixing, and tweaking.
 
 - Event handlers get tricky when you start using Handlebars or another templating system: you can't register event handlers for DOM elements that don't exist, so you have to register them for an element that *does* exist (or attach them to the document) and then specify the desired selector.
 - Working with [jQuery autocomplete](https://github.com/devbridge/jQuery-Autocomplete) was an interesting experience: I had trouble getting it to work with protected resources, and ended up unprotecting the read methods for items. I'd like to revisit this at some point, and potentially explore the jQuery UI autocomplete functionality to see if it's more usable.
-- I was able to refactor my automatic log in-on-successful-sign up functionality from the [Tic Tac Toe game](https://github.com/rebekahheacock/tic-tac-toe) I built last month. This originally used two largely redundant functions, and I was able to consilidate this into a single function.
+- I was able to refactor my automatic log in-on-successful-sign up functionality from the [Tic Tac Toe game](https://github.com/rhjones/tic-tac-toe) I built last month. This originally used two largely redundant functions, and I was able to consilidate this into a single function.
 
 ## Next steps
 
